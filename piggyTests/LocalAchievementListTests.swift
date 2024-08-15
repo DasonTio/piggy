@@ -1,8 +1,8 @@
 //
-//  piggyTests.swift
+//  LocalAchievementListTests.swift
 //  piggyTests
 //
-//  Created by Dason Tiovino on 13/08/24.
+//  Created by Dason Tiovino on 15/08/24.
 //
 
 import Combine
@@ -10,19 +10,18 @@ import XCTest
 import SwiftData
 @testable import piggy
 
-final class LocalTransactionListTest: XCTestCase {
-
-    private var useCase: TransactionListUseCase!
-    private var repository: TransactionListRepository!
+final class LocalAchievementListTests: XCTestCase {
+    
+    private var useCase: AchievementListUseCase!
+    private var repository: AchievementListRepository!
     private var cancellables = Set<AnyCancellable>()
-    private var newId: String!
 
     override func setUpWithError() throws {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: TransactionListLocalEntity.self, configurations: config)
+        let container = try ModelContainer(for: AchievementListLocalEntity.self, configurations: config)
 
-        repository = DefaultTransactionListRepository(container: container)
-        useCase = DefaultTransactionListUseCase(repository: repository)
+        repository = DefaultAchievementListRepository(container: container)
+        useCase = DefaultAchievementListUseCase(repository: repository)
     }
 
     override func tearDownWithError() throws {
@@ -38,18 +37,18 @@ final class LocalTransactionListTest: XCTestCase {
             guard let response = response else {
                 return XCTFail("Failed to get note list response")
             }
-            XCTAssertEqual(response[0].title, "TestTitle")
+            print(response)
+            XCTAssertEqual(response[0].title, "TestAchievementTitle")
         }
         .store(in: &cancellables)
     }
     
     func testAddList(){
-        let response = useCase.save(params: SaveTransactionListRequest(
-            title: "TestTitle",
+        let response = useCase.save(params: SaveAchievementListRequest(
+            title: "TestAchievementTitle",
             amount: 10000,
-            category: "TestCategory")
+            category: "TestAchievementCategory")
         )
-        
         
         response.sink { _ in
         }receiveValue: { response in
@@ -57,6 +56,7 @@ final class LocalTransactionListTest: XCTestCase {
         }
         .store(in: &cancellables)
     }
+    
     
     func testUpdateList(){
         let fetchResponse = useCase.fetch()
@@ -66,14 +66,14 @@ final class LocalTransactionListTest: XCTestCase {
             guard let response = response else {
                 return XCTFail("Failed to get note list response")
             }
-            XCTAssertEqual(response[0].title, "TestTitle")
+            XCTAssertEqual(response[0].title, "TestAchievementTitle")
         }.store(in: &cancellables)
         
-        let response = useCase.update(params: UpdateTransactionListRequest(
-            id: "19170CEC-A92B-4D04-9EC2-0692A42FD32A",
-            title: "newTitle",
+        let response = useCase.update(params: UpdateAchievementListRequest(
+            id: "8EB6287E-C034-4AF5-9BAE-F041D2707E0C",
+            title: "newAchievementTitle",
             amount: 20000,
-            category: "NewCategory")
+            category: "newAchievementCategory")
         )
         
         response.sink{_ in
@@ -96,7 +96,7 @@ final class LocalTransactionListTest: XCTestCase {
                     "The title of the selected item should be updated"
                 )
             }.store(in: &self.cancellables)
-        }.store(in: &cancellables)   
+        }.store(in: &cancellables)
     }
 
     func testPerformanceExample() throws {

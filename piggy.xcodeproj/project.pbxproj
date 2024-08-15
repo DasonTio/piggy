@@ -14,6 +14,27 @@
 		EFE929542C6B42D90091FF02 /* piggyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE929532C6B42D90091FF02 /* piggyTests.swift */; };
 		EFE9295E2C6B42D90091FF02 /* piggyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE9295D2C6B42D90091FF02 /* piggyUITests.swift */; };
 		EFE929602C6B42D90091FF02 /* piggyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE9295F2C6B42D90091FF02 /* piggyUITestsLaunchTests.swift */; };
+		EFE929F52C6C91700091FF02 /* TransactionListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE929F42C6C91700091FF02 /* TransactionListEntity.swift */; };
+		EFE929F82C6C92A30091FF02 /* TransactionListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE929F72C6C92A30091FF02 /* TransactionListUseCase.swift */; };
+		EFE929FB2C6C92C70091FF02 /* UpdateTransactionListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE929FA2C6C92C70091FF02 /* UpdateTransactionListRequest.swift */; };
+		EFE929FD2C6C92CF0091FF02 /* SaveTransactionListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE929FC2C6C92CF0091FF02 /* SaveTransactionListRequest.swift */; };
+		EFE92A082C6CAE880091FF02 /* TransactionListLocalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A072C6CAE880091FF02 /* TransactionListLocalEntity.swift */; };
+		EFE92A0A2C6CAFA10091FF02 /* SaveTransactionListRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A092C6CAFA10091FF02 /* SaveTransactionListRequestDTO.swift */; };
+		EFE92A0C2C6CB05B0091FF02 /* UpdateTransactionListRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A0B2C6CB05B0091FF02 /* UpdateTransactionListRequestDTO.swift */; };
+		EFE92A102C6CB0A40091FF02 /* TransactionListResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A0F2C6CB0A40091FF02 /* TransactionListResponseDTO.swift */; };
+		EFE92A122C6CB1920091FF02 /* TransactionListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A112C6CB1910091FF02 /* TransactionListRepository.swift */; };
+		EFE92A142C6CB2230091FF02 /* SwiftDataContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A132C6CB2230091FF02 /* SwiftDataContextManager.swift */; };
+		EFE92A182C6CBCC70091FF02 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A172C6CBCC70091FF02 /* NetworkError.swift */; };
+		EFE92A1A2C6DC1270091FF02 /* LocalAchievementListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A192C6DC1270091FF02 /* LocalAchievementListTests.swift */; };
+		EFE92A272C6DC18C0091FF02 /* AchievementListLocalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A1C2C6DC18C0091FF02 /* AchievementListLocalEntity.swift */; };
+		EFE92A282C6DC18C0091FF02 /* SaveAchievementListRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A1E2C6DC18C0091FF02 /* SaveAchievementListRequestDTO.swift */; };
+		EFE92A292C6DC18C0091FF02 /* UpdateAchievementListRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A1F2C6DC18C0091FF02 /* UpdateAchievementListRequestDTO.swift */; };
+		EFE92A2A2C6DC18C0091FF02 /* AchievementListResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A212C6DC18C0091FF02 /* AchievementListResponseDTO.swift */; };
+		EFE92A2B2C6DC18C0091FF02 /* AchievementListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A242C6DC18C0091FF02 /* AchievementListRepository.swift */; };
+		EFE92A352C6DC1970091FF02 /* SaveAchievementListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A2C2C6DC1970091FF02 /* SaveAchievementListRequest.swift */; };
+		EFE92A362C6DC1970091FF02 /* UpdateAchievementListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A2D2C6DC1970091FF02 /* UpdateAchievementListRequest.swift */; };
+		EFE92A372C6DC1970091FF02 /* AchievementListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A2F2C6DC1970091FF02 /* AchievementListEntity.swift */; };
+		EFE92A382C6DC1970091FF02 /* AchievementListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A322C6DC1970091FF02 /* AchievementListUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +65,27 @@
 		EFE929592C6B42D90091FF02 /* piggyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = piggyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE9295D2C6B42D90091FF02 /* piggyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = piggyUITests.swift; sourceTree = "<group>"; };
 		EFE9295F2C6B42D90091FF02 /* piggyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = piggyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EFE929F42C6C91700091FF02 /* TransactionListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListEntity.swift; sourceTree = "<group>"; };
+		EFE929F72C6C92A30091FF02 /* TransactionListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListUseCase.swift; sourceTree = "<group>"; };
+		EFE929FA2C6C92C70091FF02 /* UpdateTransactionListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTransactionListRequest.swift; sourceTree = "<group>"; };
+		EFE929FC2C6C92CF0091FF02 /* SaveTransactionListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTransactionListRequest.swift; sourceTree = "<group>"; };
+		EFE92A072C6CAE880091FF02 /* TransactionListLocalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListLocalEntity.swift; sourceTree = "<group>"; };
+		EFE92A092C6CAFA10091FF02 /* SaveTransactionListRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTransactionListRequestDTO.swift; sourceTree = "<group>"; };
+		EFE92A0B2C6CB05B0091FF02 /* UpdateTransactionListRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTransactionListRequestDTO.swift; sourceTree = "<group>"; };
+		EFE92A0F2C6CB0A40091FF02 /* TransactionListResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListResponseDTO.swift; sourceTree = "<group>"; };
+		EFE92A112C6CB1910091FF02 /* TransactionListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListRepository.swift; sourceTree = "<group>"; };
+		EFE92A132C6CB2230091FF02 /* SwiftDataContextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataContextManager.swift; sourceTree = "<group>"; };
+		EFE92A172C6CBCC70091FF02 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		EFE92A192C6DC1270091FF02 /* LocalAchievementListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAchievementListTests.swift; sourceTree = "<group>"; };
+		EFE92A1C2C6DC18C0091FF02 /* AchievementListLocalEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementListLocalEntity.swift; sourceTree = "<group>"; };
+		EFE92A1E2C6DC18C0091FF02 /* SaveAchievementListRequestDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveAchievementListRequestDTO.swift; sourceTree = "<group>"; };
+		EFE92A1F2C6DC18C0091FF02 /* UpdateAchievementListRequestDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAchievementListRequestDTO.swift; sourceTree = "<group>"; };
+		EFE92A212C6DC18C0091FF02 /* AchievementListResponseDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementListResponseDTO.swift; sourceTree = "<group>"; };
+		EFE92A242C6DC18C0091FF02 /* AchievementListRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementListRepository.swift; sourceTree = "<group>"; };
+		EFE92A2C2C6DC1970091FF02 /* SaveAchievementListRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveAchievementListRequest.swift; sourceTree = "<group>"; };
+		EFE92A2D2C6DC1970091FF02 /* UpdateAchievementListRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAchievementListRequest.swift; sourceTree = "<group>"; };
+		EFE92A2F2C6DC1970091FF02 /* AchievementListEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementListEntity.swift; sourceTree = "<group>"; };
+		EFE92A322C6DC1970091FF02 /* AchievementListUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementListUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +138,11 @@
 			children = (
 				EFE929422C6B42D80091FF02 /* piggyApp.swift */,
 				EFE929442C6B42D80091FF02 /* ContentView.swift */,
-				EFE929462C6B42D90091FF02 /* Assets.xcassets */,
-				EFE929482C6B42D90091FF02 /* Preview Content */,
+				EFE9296C2C6B42DF0091FF02 /* Constants */,
+				EFE9296D2C6B42E70091FF02 /* Helpers */,
+				EFE9296E2C6B42EE0091FF02 /* Infrastructure */,
+				EFE929ED2C6C90E10091FF02 /* Modules */,
+				EFE929EE2C6C90F60091FF02 /* Resources */,
 			);
 			path = piggy;
 			sourceTree = "<group>";
@@ -114,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				EFE929532C6B42D90091FF02 /* piggyTests.swift */,
+				EFE92A192C6DC1270091FF02 /* LocalAchievementListTests.swift */,
 			);
 			path = piggyTests;
 			sourceTree = "<group>";
@@ -125,6 +171,287 @@
 				EFE9295F2C6B42D90091FF02 /* piggyUITestsLaunchTests.swift */,
 			);
 			path = piggyUITests;
+			sourceTree = "<group>";
+		};
+		EFE9296C2C6B42DF0091FF02 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		EFE9296D2C6B42E70091FF02 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		EFE9296E2C6B42EE0091FF02 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				EFE929702C6B43BD0091FF02 /* SwiftData */,
+				EFE9296F2C6B43B70091FF02 /* Networking */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		EFE9296F2C6B43B70091FF02 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A172C6CBCC70091FF02 /* NetworkError.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		EFE929702C6B43BD0091FF02 /* SwiftData */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A132C6CB2230091FF02 /* SwiftDataContextManager.swift */,
+			);
+			path = SwiftData;
+			sourceTree = "<group>";
+		};
+		EFE929ED2C6C90E10091FF02 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A1B2C6DC1550091FF02 /* AchievementList */,
+				EFE929F12C6C91580091FF02 /* TransactionList */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		EFE929EE2C6C90F60091FF02 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EFE929462C6B42D90091FF02 /* Assets.xcassets */,
+				EFE929482C6B42D90091FF02 /* Preview Content */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		EFE929F12C6C91580091FF02 /* TransactionList */ = {
+			isa = PBXGroup;
+			children = (
+				EFE929FE2C6C94370091FF02 /* Data */,
+				EFE929F22C6C91630091FF02 /* Domain */,
+				EFE92A3A2C6DD2EE0091FF02 /* Scene */,
+			);
+			path = TransactionList;
+			sourceTree = "<group>";
+		};
+		EFE929F22C6C91630091FF02 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				EFE929F32C6C91670091FF02 /* Entity */,
+				EFE929F62C6C92920091FF02 /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		EFE929F32C6C91670091FF02 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A052C6CAE6D0091FF02 /* Request */,
+				EFE92A042C6CAE620091FF02 /* Response */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		EFE929F62C6C92920091FF02 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				EFE929F72C6C92A30091FF02 /* TransactionListUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		EFE929FE2C6C94370091FF02 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EFE929FF2C6C94400091FF02 /* DTO */,
+				EFE92A002C6C94450091FF02 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		EFE929FF2C6C94400091FF02 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A012C6CAD740091FF02 /* Local */,
+				EFE92A022C6CAE540091FF02 /* Request */,
+				EFE92A032C6CAE5A0091FF02 /* Response */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		EFE92A002C6C94450091FF02 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A112C6CB1910091FF02 /* TransactionListRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		EFE92A012C6CAD740091FF02 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A072C6CAE880091FF02 /* TransactionListLocalEntity.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		EFE92A022C6CAE540091FF02 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A092C6CAFA10091FF02 /* SaveTransactionListRequestDTO.swift */,
+				EFE92A0B2C6CB05B0091FF02 /* UpdateTransactionListRequestDTO.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		EFE92A032C6CAE5A0091FF02 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A0F2C6CB0A40091FF02 /* TransactionListResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		EFE92A042C6CAE620091FF02 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				EFE929F42C6C91700091FF02 /* TransactionListEntity.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		EFE92A052C6CAE6D0091FF02 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				EFE929FA2C6C92C70091FF02 /* UpdateTransactionListRequest.swift */,
+				EFE929FC2C6C92CF0091FF02 /* SaveTransactionListRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		EFE92A1B2C6DC1550091FF02 /* AchievementList */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A262C6DC18C0091FF02 /* Data */,
+				EFE92A342C6DC1970091FF02 /* Domain */,
+				EFE92A392C6DD2E10091FF02 /* Scene */,
+			);
+			path = AchievementList;
+			sourceTree = "<group>";
+		};
+		EFE92A1D2C6DC18C0091FF02 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A1C2C6DC18C0091FF02 /* AchievementListLocalEntity.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		EFE92A202C6DC18C0091FF02 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A1E2C6DC18C0091FF02 /* SaveAchievementListRequestDTO.swift */,
+				EFE92A1F2C6DC18C0091FF02 /* UpdateAchievementListRequestDTO.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		EFE92A222C6DC18C0091FF02 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A212C6DC18C0091FF02 /* AchievementListResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		EFE92A232C6DC18C0091FF02 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A1D2C6DC18C0091FF02 /* Local */,
+				EFE92A202C6DC18C0091FF02 /* Request */,
+				EFE92A222C6DC18C0091FF02 /* Response */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		EFE92A252C6DC18C0091FF02 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A242C6DC18C0091FF02 /* AchievementListRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		EFE92A262C6DC18C0091FF02 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A232C6DC18C0091FF02 /* DTO */,
+				EFE92A252C6DC18C0091FF02 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		EFE92A2E2C6DC1970091FF02 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A2C2C6DC1970091FF02 /* SaveAchievementListRequest.swift */,
+				EFE92A2D2C6DC1970091FF02 /* UpdateAchievementListRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		EFE92A302C6DC1970091FF02 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A2F2C6DC1970091FF02 /* AchievementListEntity.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		EFE92A312C6DC1970091FF02 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A2E2C6DC1970091FF02 /* Request */,
+				EFE92A302C6DC1970091FF02 /* Response */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		EFE92A332C6DC1970091FF02 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A322C6DC1970091FF02 /* AchievementListUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		EFE92A342C6DC1970091FF02 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				EFE92A312C6DC1970091FF02 /* Entity */,
+				EFE92A332C6DC1970091FF02 /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		EFE92A392C6DD2E10091FF02 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		EFE92A3A2C6DD2EE0091FF02 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Scene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +584,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFE92A2B2C6DC18C0091FF02 /* AchievementListRepository.swift in Sources */,
+				EFE92A2A2C6DC18C0091FF02 /* AchievementListResponseDTO.swift in Sources */,
 				EFE929452C6B42D80091FF02 /* ContentView.swift in Sources */,
+				EFE929F52C6C91700091FF02 /* TransactionListEntity.swift in Sources */,
+				EFE929F82C6C92A30091FF02 /* TransactionListUseCase.swift in Sources */,
 				EFE929432C6B42D80091FF02 /* piggyApp.swift in Sources */,
+				EFE92A102C6CB0A40091FF02 /* TransactionListResponseDTO.swift in Sources */,
+				EFE92A292C6DC18C0091FF02 /* UpdateAchievementListRequestDTO.swift in Sources */,
+				EFE92A0C2C6CB05B0091FF02 /* UpdateTransactionListRequestDTO.swift in Sources */,
+				EFE92A282C6DC18C0091FF02 /* SaveAchievementListRequestDTO.swift in Sources */,
+				EFE92A372C6DC1970091FF02 /* AchievementListEntity.swift in Sources */,
+				EFE92A272C6DC18C0091FF02 /* AchievementListLocalEntity.swift in Sources */,
+				EFE92A362C6DC1970091FF02 /* UpdateAchievementListRequest.swift in Sources */,
+				EFE929FB2C6C92C70091FF02 /* UpdateTransactionListRequest.swift in Sources */,
+				EFE92A382C6DC1970091FF02 /* AchievementListUseCase.swift in Sources */,
+				EFE92A142C6CB2230091FF02 /* SwiftDataContextManager.swift in Sources */,
+				EFE929FD2C6C92CF0091FF02 /* SaveTransactionListRequest.swift in Sources */,
+				EFE92A352C6DC1970091FF02 /* SaveAchievementListRequest.swift in Sources */,
+				EFE92A082C6CAE880091FF02 /* TransactionListLocalEntity.swift in Sources */,
+				EFE92A182C6CBCC70091FF02 /* NetworkError.swift in Sources */,
+				EFE92A122C6CB1920091FF02 /* TransactionListRepository.swift in Sources */,
+				EFE92A0A2C6CAFA10091FF02 /* SaveTransactionListRequestDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +614,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFE929542C6B42D90091FF02 /* piggyTests.swift in Sources */,
+				EFE92A1A2C6DC1270091FF02 /* LocalAchievementListTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,7 +769,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"piggy/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"piggy/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = DP3K3GBL6K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -450,7 +798,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"piggy/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"piggy/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = DP3K3GBL6K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
