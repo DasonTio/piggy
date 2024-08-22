@@ -15,7 +15,7 @@ enum Route: Hashable {
     case parental
 }
 
-class NavigationStackRouter: ObservableObject {
+class NavigationRouteController: ObservableObject {
     @Published var navigationStack: [Route] = []
     
     func push(_ route: Route) {

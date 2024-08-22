@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject private var router: NavigationStackRouter
+    @EnvironmentObject private var router: NavigationRouteController
     @State private var isAnimating: Bool = false
     
     var body: some View {

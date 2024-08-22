@@ -11,7 +11,7 @@ import SwiftUI
 
 class PinViewController: UIViewController, UITextFieldDelegate {
 
-    @Published internal var router: NavigationStackRouter = .init()
+    @Published internal var router: NavigationRouteController = .init()
 
     private let piggyPlanImageView = UIImageView()
     private let instructionLabel = UILabel()
@@ -170,7 +170,7 @@ class PinViewController: UIViewController, UITextFieldDelegate {
 
 struct PinViewControllerRepresentable: UIViewControllerRepresentable {
     
-    @EnvironmentObject private var router: NavigationStackRouter
+    @EnvironmentObject private var router: NavigationRouteController
     
     typealias UIViewControllerType = PinViewController
     

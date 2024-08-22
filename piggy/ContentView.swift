@@ -15,7 +15,7 @@ class AddTransactionWrapper: ObservableObject {
 
 struct ContentView: View {
     @StateObject private var addTransactionWrapper = AddTransactionWrapper()
-    @StateObject var router = NavigationStackRouter()
+    @StateObject var router = NavigationRouteController()
     
     var body: some View {
         NavigationStack (
