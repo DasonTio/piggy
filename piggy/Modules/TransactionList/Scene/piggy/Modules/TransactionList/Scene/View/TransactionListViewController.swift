@@ -12,6 +12,7 @@ internal class TransactionListViewController: UIViewController {
     
     // MARK: - Properties
     private var viewModel: TransactionListViewModel!
+    var navigationRouteController: NavigationRouteController?
     private var cancellables = Set<AnyCancellable>()
     
     @Published internal var addTransactionWrapper: AddTransactionWrapper = .init()
@@ -129,6 +130,37 @@ internal class TransactionListViewController: UIViewController {
             backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
         
+        let backButton = UIButton(type: .custom)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        view.addSubview(backButton)
+        
+        let bakButtonSymbolConfiguration = UIImage.SymbolConfiguration(pointSize: 34, weight: .bold, scale: .large)
+        let backButtonImage = UIImage(systemName: "arrow.backward.square.fill", withConfiguration: bakButtonSymbolConfiguration)?
+            .withRenderingMode(.alwaysOriginal)
+            .applyingSymbolConfiguration(.preferringMulticolor())
+        backButton.setImage(backButtonImage, for: .normal)
+        backButton.tintColor = UIColor.base
+        backButton.layer.borderColor = UIColor.white.cgColor
+        backButton.layer.borderWidth = 4
+        backButton.layer.cornerRadius = 12
+        
+        let screenName = UILabel()
+        screenName.text = "Transaction Page"
+        let fontDescriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .largeTitle)
+        screenName.font = UIFont(descriptor: fontDescriptor.withSymbolicTraits(.traitBold)!, size: 0)
+        screenName.textColor = UIColor.tint2
+        screenName.textAlignment = .center
+        screenName.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(screenName)
+        
+        NSLayoutConstraint.activate([
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 28),
+
+            screenName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            screenName.topAnchor.constraint(equalTo: view.topAnchor, constant: 28)
+        ])
 
         let leftContainerView = UIView()
         leftContainerView.backgroundColor = UIColor.tint2
@@ -141,7 +173,7 @@ internal class TransactionListViewController: UIViewController {
         // Constraints for left container
         NSLayoutConstraint.activate([
             leftContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            leftContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            leftContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 64),
             leftContainerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
             leftContainerView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3),
         ])
@@ -155,7 +187,7 @@ internal class TransactionListViewController: UIViewController {
 
         // Constraints for piggy bank
         NSLayoutConstraint.activate([
-            piggyBankImageView.topAnchor.constraint(equalTo: leftContainerView.topAnchor, constant: 65),
+            piggyBankImageView.topAnchor.constraint(equalTo: leftContainerView.topAnchor, constant: 50),
             piggyBankImageView.leadingAnchor.constraint(equalTo: leftContainerView.leadingAnchor, constant: 30),
             piggyBankImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.18),
             piggyBankImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.48)
@@ -172,7 +204,7 @@ internal class TransactionListViewController: UIViewController {
             shieldView.topAnchor.constraint(equalTo: piggyBankImageView.topAnchor, constant: 270),
             shieldView.leftAnchor.constraint(equalTo: leftContainerView.leftAnchor, constant: 30),
             shieldView.rightAnchor.constraint(equalTo: leftContainerView.rightAnchor, constant: -30),
-            shieldView.heightAnchor.constraint(equalTo: leftContainerView.heightAnchor, multiplier: 0.48)
+            shieldView.heightAnchor.constraint(equalTo: leftContainerView.heightAnchor, multiplier: 0.45)
         ])
         
         shieldView.layoutIfNeeded()
@@ -271,7 +303,7 @@ internal class TransactionListViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             candyStackView.centerXAnchor.constraint(equalTo: shieldView.centerXAnchor),
-            candyStackView.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 30),
+            candyStackView.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 24),
         ])
         
         let containerView = UIView()
@@ -310,6 +342,7 @@ internal class TransactionListViewController: UIViewController {
         addButton.translatesAutoresizingMaskIntoConstraints = false
         addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         containerView.addSubview(addButton)
+        
 
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 34, weight: .bold, scale: .large)
         let plusImage = UIImage(systemName: "plus.square.fill", withConfiguration: symbolConfiguration)
@@ -320,7 +353,7 @@ internal class TransactionListViewController: UIViewController {
         addButton.layer.cornerRadius = 12
                 
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 64),
             containerView.leadingAnchor.constraint(equalTo: leftContainerView.trailingAnchor, constant: 32),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             containerView.heightAnchor.constraint(equalToConstant: 125),
@@ -431,6 +464,10 @@ internal class TransactionListViewController: UIViewController {
     
     @objc func addButtonTapped() {
         addTransactionWrapper.isPresented = true
+    }
+    
+    @objc func backButtonTapped() {
+        navigationRouteController?.pop()
     }
 
 }
