@@ -9,18 +9,18 @@ import Foundation
 
 internal struct TransactionListResponseDTO: Codable {
     let id: String?
-    let title: String?
-    let amount: Int?
+    let date: Date?
     let category: String?
+    let amount: Int?
 }
 
 internal extension TransactionListResponseDTO {
     func toDomain() -> TransactionListEntity {
         return .init(
             id: self.id ?? "-",
-            title: self.title ?? "-",
-            amount: self.amount ?? 0,
-            category: self.category ?? "-"
+            date: self.date ?? Date(),
+            category: self.category ?? "-",
+            amount: self.amount ?? 0
         )
     }
 }

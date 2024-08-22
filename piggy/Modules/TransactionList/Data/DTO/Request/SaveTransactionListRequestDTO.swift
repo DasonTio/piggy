@@ -9,7 +9,7 @@ import Foundation
 
 internal struct SaveTransactionListRequestDTO: Encodable {
     let id: String
-    let title: String
-    let amount: Int
+    let date: Date
     let category: String
+    let amount: Int
 }
