@@ -8,20 +8,22 @@
 import Foundation
 
 internal struct StickerPosition{
-    let x: Float
-    let y: Float
+    var x: Float
+    var y: Float
 }
 
 internal struct AchievementStickerEntity: Identifiable{
     let id: String
     let image: String
-    let position: StickerPosition
+    var position: StickerPosition
     let scale: Float?
+    let isShowed: Bool
     
-    init(id: String, image: String, position: StickerPosition, scale: Float? = 1.00) {
+    init(id: String, image: String, position: StickerPosition, scale: Float? = 1.00, isShowed: Bool = false) {
         self.id = id
         self.image = image
         self.position = position
         self.scale = scale
+        self.isShowed = isShowed
     }
 }

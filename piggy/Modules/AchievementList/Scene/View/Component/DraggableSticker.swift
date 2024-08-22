@@ -10,22 +10,10 @@ import SwiftUI
 
 struct DraggableSticker: View {
     var image: String
-    var widthBound: CGFloat
-    var heightBound: CGFloat
-    @State private var position: CGSize = .zero
+    @Binding var position: StickerPosition
+    @State private var coordinate: CGSize = .zero
     @State private var initialOffset: CGSize = .zero
-
-    init(image: String, widthBound: CGFloat, heightBound: CGFloat, position: StickerPosition) {
-        self.image = image
-        self.widthBound = widthBound
-        self.heightBound = heightBound
-        self.position = .init(
-            width: CGFloat(position.x),
-            height: CGFloat(position.y)
-        )
-        self.initialOffset = .zero
-        
-    }
+    
     
     var body: some View {
         GeometryReader{ geometry in
@@ -34,18 +22,23 @@ struct DraggableSticker: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 100) // Adjust width as needed
                 .position(
-                    x: geometry.size.width / 2 + position.width,
-                    y: geometry.size.height / 2 + position.height)
+                    x: geometry.size.width / 2 + CGFloat(position.x),
+                    y: geometry.size.height / 2 + CGFloat(position.y)
+                )
                 .gesture(
                     DragGesture()
                         .onChanged { value in
-                            self.position = CGSize(
+                            self.position.x = Float(CGFloat(self.initialOffset.width + value.translation.width))
+                            self.position.y = Float(CGFloat(self.initialOffset.height + value.translation.height))
+                            self.coordinate = CGSize(
                                 width: self.initialOffset.width + value.translation.width,
                                 height: self.initialOffset.height + value.translation.height
                             )
                         }
                         .onEnded{_ in
-                            self.initialOffset = self.position
+                            self.initialOffset = self.coordinate
+                            self.position.x = Float(self.coordinate.width)
+                            self.position.y = Float(self.coordinate.height)
                         }
                 )
 

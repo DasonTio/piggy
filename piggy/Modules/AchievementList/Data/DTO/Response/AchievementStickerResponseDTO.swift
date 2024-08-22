@@ -12,6 +12,7 @@ internal struct AchievementStickerResponseDTO: Codable {
     var image: String?
     var position: StickerPositionDTO?
     var scale: Float?
+    var isShowed: Bool?
 }
 
 internal extension AchievementStickerResponseDTO {
@@ -20,7 +21,8 @@ internal extension AchievementStickerResponseDTO {
             id: self.id ?? "-",
             image: self.image ?? "-",
             position: self.position?.toDomain() ?? StickerPosition(x: 0, y: 0),
-            scale: self.scale ?? 0.0
+            scale: self.scale ?? 0.0,
+            isShowed: self.isShowed ?? false
         )
     }
 }

@@ -28,14 +28,8 @@
 		EF34110A2C747B8C00AD1CDE /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3411092C747B8C00AD1CDE /* UITableViewCell+Extensions.swift */; };
 		EF34110C2C747C3400AD1CDE /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34110B2C747C3400AD1CDE /* UIViewController+Extensions.swift */; };
 		EF34110F2C747D2600AD1CDE /* LoadingToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34110E2C747D2600AD1CDE /* LoadingToast.swift */; };
-		EF3411132C74825F00AD1CDE /* AchievementListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3411122C74825F00AD1CDE /* AchievementListViewModel.swift */; };
-		EF3411162C74830B00AD1CDE /* AchievementListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3411152C74830B00AD1CDE /* AchievementListCoordinator.swift */; };
 		EF3411182C748B5300AD1CDE /* DataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3411172C748B5300AD1CDE /* DataState.swift */; };
-		EFA21A6D2C75A1BC008D31A9 /* AchievementListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA21A6B2C75A1BC008D31A9 /* AchievementListTableViewCell.swift */; };
-		EFA21A6E2C75A1BC008D31A9 /* AchievementListTableViewCellXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFA21A6C2C75A1BC008D31A9 /* AchievementListTableViewCellXIB.xib */; };
 		EFD423C72C733F9300D38B8F /* AchievementStickerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD423C62C733F9300D38B8F /* AchievementStickerEntity.swift */; };
-		EFD423D32C73525600D38B8F /* AchievementListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD423D22C73525600D38B8F /* AchievementListViewController.swift */; };
-		EFD423D72C73553500D38B8F /* AchievementListViewControllerXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFD423D62C73553500D38B8F /* AchievementListViewControllerXIB.xib */; };
 		EFE929432C6B42D80091FF02 /* piggyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE929422C6B42D80091FF02 /* piggyApp.swift */; };
 		EFE929452C6B42D80091FF02 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE929442C6B42D80091FF02 /* ContentView.swift */; };
 		EFE929472C6B42D90091FF02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFE929462C6B42D90091FF02 /* Assets.xcassets */; };
@@ -103,14 +97,8 @@
 		EF3411092C747B8C00AD1CDE /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		EF34110B2C747C3400AD1CDE /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		EF34110E2C747D2600AD1CDE /* LoadingToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingToast.swift; sourceTree = "<group>"; };
-		EF3411122C74825F00AD1CDE /* AchievementListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementListViewModel.swift; sourceTree = "<group>"; };
-		EF3411152C74830B00AD1CDE /* AchievementListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementListCoordinator.swift; sourceTree = "<group>"; };
 		EF3411172C748B5300AD1CDE /* DataState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataState.swift; sourceTree = "<group>"; };
-		EFA21A6B2C75A1BC008D31A9 /* AchievementListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AchievementListTableViewCell.swift; sourceTree = "<group>"; };
-		EFA21A6C2C75A1BC008D31A9 /* AchievementListTableViewCellXIB.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AchievementListTableViewCellXIB.xib; sourceTree = "<group>"; };
 		EFD423C62C733F9300D38B8F /* AchievementStickerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementStickerEntity.swift; sourceTree = "<group>"; };
-		EFD423D22C73525600D38B8F /* AchievementListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementListViewController.swift; sourceTree = "<group>"; };
-		EFD423D62C73553500D38B8F /* AchievementListViewControllerXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AchievementListViewControllerXIB.xib; sourceTree = "<group>"; };
 		EFE9293F2C6B42D80091FF02 /* piggy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = piggy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE929422C6B42D80091FF02 /* piggyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = piggyApp.swift; sourceTree = "<group>"; };
 		EFE929442C6B42D80091FF02 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -223,10 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				EF17E84F2C76E72300C131DA /* Component */,
-				EFA21A6B2C75A1BC008D31A9 /* AchievementListTableViewCell.swift */,
-				EFA21A6C2C75A1BC008D31A9 /* AchievementListTableViewCellXIB.xib */,
-				EFD423D22C73525600D38B8F /* AchievementListViewController.swift */,
-				EFD423D62C73553500D38B8F /* AchievementListViewControllerXIB.xib */,
 				EF17E84D2C76DBC500C131DA /* AchievementView.swift */,
 			);
 			path = View;
@@ -235,18 +219,9 @@
 		EF3411112C74825500AD1CDE /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				EF3411122C74825F00AD1CDE /* AchievementListViewModel.swift */,
 				EF17E8522C76EB9400C131DA /* AchievementListViewModelSwiftUI.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		EF3411142C7482F900AD1CDE /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				EF3411152C74830B00AD1CDE /* AchievementListCoordinator.swift */,
-			);
-			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		EFE929362C6B42D80091FF02 = {
@@ -478,7 +453,6 @@
 		EFE92A1B2C6DC1550091FF02 /* AchievementList */ = {
 			isa = PBXGroup;
 			children = (
-				EF3411142C7482F900AD1CDE /* Coordinator */,
 				EFE92A262C6DC18C0091FF02 /* Data */,
 				EFE92A342C6DC1970091FF02 /* Domain */,
 				EFE92A392C6DD2E10091FF02 /* Scene */,
@@ -712,9 +686,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFA21A6E2C75A1BC008D31A9 /* AchievementListTableViewCellXIB.xib in Resources */,
 				EFE9294A2C6B42D90091FF02 /* Preview Assets.xcassets in Resources */,
-				EFD423D72C73553500D38B8F /* AchievementListViewControllerXIB.xib in Resources */,
 				EFE929472C6B42D90091FF02 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -746,9 +718,7 @@
 				EFE92A2A2C6DC18C0091FF02 /* AchievementListResponseDTO.swift in Sources */,
 				D94777302C735D4900F15A9B /* TransactionListCoordinator.swift in Sources */,
 				EF17E85D2C77074600C131DA /* AchievementStickerRepository.swift in Sources */,
-				EFD423D32C73525600D38B8F /* AchievementListViewController.swift in Sources */,
 				EFE929452C6B42D80091FF02 /* ContentView.swift in Sources */,
-				EF3411132C74825F00AD1CDE /* AchievementListViewModel.swift in Sources */,
 				EF17E8512C76E73700C131DA /* AchievementEmptyViewComponent.swift in Sources */,
 				EF17E85B2C7705A600C131DA /* AchievementStickerResponseDTO.swift in Sources */,
 				EFE929F52C6C91700091FF02 /* TransactionListEntity.swift in Sources */,
@@ -759,7 +729,6 @@
 				EF17E8572C7704AD00C131DA /* SaveStickerRequestDTO.swift in Sources */,
 				EFE92A102C6CB0A40091FF02 /* TransactionListResponseDTO.swift in Sources */,
 				EFE92A292C6DC18C0091FF02 /* UpdateAchievementListRequestDTO.swift in Sources */,
-				EFA21A6D2C75A1BC008D31A9 /* AchievementListTableViewCell.swift in Sources */,
 				EF34110F2C747D2600AD1CDE /* LoadingToast.swift in Sources */,
 				EFE92A282C6DC18C0091FF02 /* SaveAchievementListRequestDTO.swift in Sources */,
 				EFD423C72C733F9300D38B8F /* AchievementStickerEntity.swift in Sources */,
@@ -772,7 +741,6 @@
 				EF17E8592C7704B500C131DA /* UpdateStickerRequestDTO.swift in Sources */,
 				EF17E85F2C770A0600C131DA /* AchievementStickerUseCase.swift in Sources */,
 				EF17E8532C76EB9400C131DA /* AchievementListViewModelSwiftUI.swift in Sources */,
-				EF3411162C74830B00AD1CDE /* AchievementListCoordinator.swift in Sources */,
 				EF17E84E2C76DBC500C131DA /* AchievementView.swift in Sources */,
 				D94777322C75D6ED00F15A9B /* TransactionTableViewCell.swift in Sources */,
 				D94777352C7652DC00F15A9B /* AddTransactionViewController.swift in Sources */,
@@ -1010,6 +978,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DP3K3GBL6K;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dasontio.piggyTests;
@@ -1030,6 +999,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DP3K3GBL6K;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dasontio.piggyTests;

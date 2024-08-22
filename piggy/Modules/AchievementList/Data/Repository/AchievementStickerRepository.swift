@@ -54,7 +54,9 @@ internal final class DefaultAchievementStickerRepository: AchievementStickerRepo
                         id: params.id,
                         image: params.image, 
                         position: params.position.toLocal(),
-                        scale: params.scale)
+                        scale: params.scale,
+                        isShowed: params.isShowed
+                    )
                     
                     self.container?.mainContext.insert(data)
                     try self.container?.mainContext.save()
@@ -82,6 +84,7 @@ internal final class DefaultAchievementStickerRepository: AchievementStickerRepo
                         data.image = params.image
                         data.position = params.position.toLocal()
                         data.scale = params.scale
+                        data.isShowed = params.isShowed
                         try self.container?.mainContext.save()
                         promise(.success(true))
                     }else{
