@@ -12,7 +12,7 @@ internal struct UpdateAchievementStickerRequest {
     let image: String
     let position: StickerPosition
     let scale: Float?
-    
+    let isShowed: Bool
 }
 
 
@@ -25,7 +25,8 @@ extension UpdateAchievementStickerRequest {
                 x: self.position.x,
                 y: self.position.y
             ),
-            scale: self.scale
+            scale: self.scale,
+            isShowed: self.isShowed
         )
     }
 }

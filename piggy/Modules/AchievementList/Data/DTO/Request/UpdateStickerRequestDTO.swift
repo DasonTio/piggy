@@ -12,4 +12,5 @@ internal struct UpdateAchievementStickerRequestDTO: Encodable {
     let image: String
     let position: StickerPositionDTO
     let scale: Float?
+    let isShowed: Bool
 }

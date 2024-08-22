@@ -10,7 +10,6 @@ import SwiftUI
 internal struct AchievementView: View {
     
     @ObservedObject var viewModel: AchievementListViewModelSwiftUI
-//    private var useCase: AchievementListUseCase!
     
     init() {
         let achievementUseCase = DefaultAchievementListUseCase(
@@ -76,13 +75,13 @@ internal struct AchievementView: View {
                                                 GeometryReader{ geometry in
                                                     ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)){
                                                         
-                                                        ForEach(viewModel.sticker){ sticker in
-                                                            DraggableSticker(
-                                                                image: "Mascot",
-                                                                widthBound: geometry.size.width,
-                                                                heightBound: geometry.size.height,
-                                                                position: sticker.position
-                                                            )
+                                                        ForEach($viewModel.sticker){ $sticker in
+                                                            if sticker.isShowed {
+                                                                DraggableSticker(
+                                                                    image: "Mascot",
+                                                                    position: $sticker.position
+                                                                )
+                                                            }else{}
                                                         }
                                                         
                                                         
@@ -92,7 +91,24 @@ internal struct AchievementView: View {
                                                             .frame(
                                                             maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/,
                                                             maxHeight:  heightPercentage * 10
-                                                            ).position(
+                                                            ).overlay{
+                                                                ScrollView(.horizontal){
+                                                                    ForEach(viewModel.sticker){ sticker in
+                                                                        Button{
+                                                                            viewModel.updateStickerShowState(model: sticker)
+                                                                        }label:{
+                                                                            Image(sticker.image)
+                                                                                .resizable()
+                                                                                .aspectRatio(contentMode: .fit)
+                                                                                .grayscale(sticker.isShowed ? 0 : 1)
+                                                                        }
+                                                                    }
+                                                                }.frame(
+                                                                    maxWidth: .infinity,
+                                                                    maxHeight: .infinity
+                                                                )
+                                                            }
+                                                            .position(
                                                                 CGPoint(
                                                                     x: geometry.size.width/2,
                                                                     y:geometry.size.height - heightPercentage * 10 / 2

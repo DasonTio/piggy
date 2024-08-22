@@ -85,7 +85,13 @@ internal final class AchievementListViewModelSwiftUI: ObservableObject {
     }
     
     func updateItemClaimed(model: AchievementListEntity){
-        if model.isReadyToClaim {
+        if model.isClaimed{
+            showAlert.toggle()
+            alertMessage = "The reward already claimed"
+            return
+        }
+        
+        if model.isReadyToClaim && !model.isClaimed {
             self.achievementUseCase.update(params: .init(
                 id: model.id,
                 title: model.title,
@@ -94,6 +100,12 @@ internal final class AchievementListViewModelSwiftUI: ObservableObject {
                 isClaimed: !model.isClaimed,
                 isReadyToClaim: model.isReadyToClaim
                 )
+            )
+            self.stickerUseCase.save(params: .init(
+                image: "Mascot",
+                position: StickerPosition(x: 0, y: 0),
+                scale: 1,
+                isShowed: false)
             )
         }else{
             showAlert.toggle()
@@ -105,6 +117,17 @@ internal final class AchievementListViewModelSwiftUI: ObservableObject {
     
     func updateStickerPosition(model: AchievementStickerEntity){
         
+    }
+    
+    func updateStickerShowState(model: AchievementStickerEntity){
+        self.stickerUseCase.update(params: .init(
+            id: model.id,
+            image: model.image,
+            position: model.position,
+            scale: model.scale,
+            isShowed: !model.isShowed)
+        )
+        self.fetch()
     }
     
     func deleteItem(id:String){

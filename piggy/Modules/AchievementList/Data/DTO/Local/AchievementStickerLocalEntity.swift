@@ -27,12 +27,14 @@ internal class AchievementStickerLocalEntity{
     var image: String
     var position: StickerPositionLocalEntity
     var scale: Float?
+    var isShowed: Bool
     
-    init(id: String, image: String, position: StickerPositionLocalEntity, scale: Float? = 1.00) {
+    init(id: String, image: String, position: StickerPositionLocalEntity, scale: Float? = 1.00, isShowed: Bool = false) {
         self.id = id
         self.image = image
         self.position = position
         self.scale = scale
+        self.isShowed = isShowed
     }
 }
 
@@ -43,7 +45,8 @@ extension AchievementStickerLocalEntity{
             id: self.id,
             image: self.image,
             position: self.position.toDomain(),
-            scale: self.scale
+            scale: self.scale,
+            isShowed: self.isShowed
         )
     }
 }

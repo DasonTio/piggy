@@ -8,10 +8,11 @@
 import Foundation
 
 internal struct SaveAchievementStickerRequest {
-    let id: String
+    let id: String = UUID().uuidString
     let image: String
     let position: StickerPosition
     let scale: Float?
+    let isShowed: Bool
 }
 
 
@@ -24,7 +25,8 @@ extension SaveAchievementStickerRequest {
                 x: self.position.x,
                 y: self.position.y
             ),
-            scale: self.scale
+            scale: self.scale,
+            isShowed: self.isShowed
         )
     }
 }

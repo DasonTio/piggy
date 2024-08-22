@@ -9,11 +9,13 @@ import SwiftUI
 
 @main
 
+
 struct piggyApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack{
-                AchievementView()
+                ContentView()
+//                AchievementView()
 //                AchievementListViewControllerRepresentable()
             }
         }
