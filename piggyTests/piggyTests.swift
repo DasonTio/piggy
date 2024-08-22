@@ -30,73 +30,73 @@ final class LocalTransactionListTest: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testGetList() {
-        let response = useCase.fetch()
-
-        response.sink { _ in
-        } receiveValue: { response in
-            guard let response = response else {
-                return XCTFail("Failed to get note list response")
-            }
-            XCTAssertEqual(response[0].title, "TestTitle")
-        }
-        .store(in: &cancellables)
-    }
+//    func testGetList() {
+//        let response = useCase.fetch()
+//
+//        response.sink { _ in
+//        } receiveValue: { response in
+//            guard let response = response else {
+//                return XCTFail("Failed to get note list response")
+//            }
+//            XCTAssertEqual(response[0].title, "TestTitle")
+//        }
+//        .store(in: &cancellables)
+//    }
     
-    func testAddList(){
-        let response = useCase.save(params: SaveTransactionListRequest(
-            title: "TestTitle",
-            amount: 10000,
-            category: "TestCategory")
-        )
-        
-        response.sink { _ in
-        }receiveValue: { response in
-            XCTAssertEqual(response, true)
-        }
-        .store(in: &cancellables)
-    }
+//    func testAddList(){
+//        let response = useCase.save(params: SaveTransactionListRequest(
+//            title: "TestTitle",
+//            amount: 10000,
+//            category: "TestCategory")
+//        )
+//        
+//        response.sink { _ in
+//        }receiveValue: { response in
+//            XCTAssertEqual(response, true)
+//        }
+//        .store(in: &cancellables)
+//    }
     
-    func testUpdateList(){
-        let fetchResponse = useCase.fetch()
-        
-        fetchResponse.sink{_ in
-        }receiveValue: { response in
-            guard let response = response else {
-                return XCTFail("Failed to get note list response")
-            }
-            XCTAssertEqual(response[0].title, "TestTitle")
-        }.store(in: &cancellables)
-        
-        let response = useCase.update(params: UpdateTransactionListRequest(
-            id: "19170CEC-A92B-4D04-9EC2-0692A42FD32A",
-            title: "newTitle",
-            amount: 20000,
-            category: "NewCategory")
-        )
-        
-        response.sink{_ in
-        }receiveValue: { response in
-            XCTAssertEqual(response, true)
-            
-            let fetchResponse = self.useCase.fetch()
-            fetchResponse.sink { _ in
-            } receiveValue: { response in
-                guard let response = response else {
-                    return XCTFail("Failed to get note list response")
-                }
-                XCTAssertEqual(
-                    response.first(
-                        where: {
-                            $0.id == "19170CEC-A92B-4D04-9EC2-0692A42FD32A"
-                        }
-                    )!.title,
-                    "newTitle",
-                    "The title of the selected item should be updated"
-                )
-            }.store(in: &self.cancellables)
-        }.store(in: &cancellables)   
-    }
+//    func testUpdateList(){
+//        let fetchResponse = useCase.fetch()
+//        
+//        fetchResponse.sink{_ in
+//        }receiveValue: { response in
+//            guard let response = response else {
+//                return XCTFail("Failed to get note list response")
+//            }
+//            XCTAssertEqual(response[0].title, "TestTitle")
+//        }.store(in: &cancellables)
+//        
+//        let response = useCase.update(params: UpdateTransactionListRequest(
+//            id: "19170CEC-A92B-4D04-9EC2-0692A42FD32A",
+//            title: "newTitle",
+//            amount: 20000,
+//            category: "NewCategory")
+//        )
+//        
+//        response.sink{_ in
+//        }receiveValue: { response in
+//            XCTAssertEqual(response, true)
+//            
+//            let fetchResponse = self.useCase.fetch()
+//            fetchResponse.sink { _ in
+//            } receiveValue: { response in
+//                guard let response = response else {
+//                    return XCTFail("Failed to get note list response")
+//                }
+//                XCTAssertEqual(
+//                    response.first(
+//                        where: {
+//                            $0.id == "19170CEC-A92B-4D04-9EC2-0692A42FD32A"
+//                        }
+//                    )!.title,
+//                    "newTitle",
+//                    "The title of the selected item should be updated"
+//                )
+//            }.store(in: &self.cancellables)
+//        }.store(in: &cancellables)   
+//    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

@@ -11,16 +11,16 @@ import SwiftData
 @Model
 class TransactionListLocalEntity{
     @Attribute(.unique) var id: String
-    var title: String
-    var amount: Int
+    var date: Date
     var category: String
+    var amount: Int
  
     
-    init(id: String, title: String, amount: Int, category: String) {
+    init(id: String, date: Date, category: String, amount: Int) {
         self.id = id
-        self.title = title
-        self.amount = amount
+        self.date = date
         self.category = category
+        self.amount = amount
     }
 }
 
@@ -28,9 +28,10 @@ extension TransactionListLocalEntity{
     func toDomain() -> TransactionListEntity {
         return .init(
             id: self.id,
-            title: self.title,
-            amount: self.amount,
-            category: self.category
+            date: self.date,
+            category: self.category,
+            amount: self.amount
+            
         )
     }
 }

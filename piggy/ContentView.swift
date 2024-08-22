@@ -7,18 +7,24 @@
 
 import SwiftUI
 
+class AddTransactionWrapper: ObservableObject {
+    @Published var isPresented: Bool = false
+    @Published var category: String?
+    @Published var amount: Int?
+}
+
 struct ContentView: View {
+    @StateObject private var addTransactionWrapper = AddTransactionWrapper()
+    
     var body: some View {
-        VStack {
-            NavigationStack{
-                
-            }
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            TransactionListViewControllerRepresentable()
+                .edgesIgnoringSafeArea(.all)
+                .sheet(isPresented: $addTransactionWrapper.isPresented, content: {
+                    AddTransactionViewControllerRepresentable()
+                })
         }
-        .padding()
+        .environmentObject(addTransactionWrapper)
     }
 }
 

@@ -9,18 +9,18 @@ import Foundation
 
 internal struct SaveTransactionListRequest {
     let id: String = UUID().uuidString
-    let title: String
-    let amount: Int
+    let date: Date
     let category: String
+    let amount: Int
 }
 
 extension SaveTransactionListRequest {
     func toRequest() -> SaveTransactionListRequestDTO {
         return .init(
             id: self.id,
-            title: self.title,
-            amount: self.amount,
-            category: self.category
+            date: self.date,
+            category: self.category,
+            amount: self.amount
         )
     }
 }

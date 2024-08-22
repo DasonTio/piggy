@@ -37,7 +37,6 @@ final class LocalAchievementListTests: XCTestCase {
             guard let response = response else {
                 return XCTFail("Failed to get note list response")
             }
-            print(response)
             XCTAssertEqual(response[0].title, "Hello")
         }
         .store(in: &cancellables)

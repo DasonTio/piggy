@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D947772D2C735C0400F15A9B /* TransactionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D947772C2C735C0400F15A9B /* TransactionListViewController.swift */; };
+		D94777302C735D4900F15A9B /* TransactionListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D947772F2C735D4900F15A9B /* TransactionListCoordinator.swift */; };
+		D94777322C75D6ED00F15A9B /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94777312C75D6ED00F15A9B /* TransactionTableViewCell.swift */; };
+		D94777352C7652DC00F15A9B /* AddTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94777342C7652DC00F15A9B /* AddTransactionViewController.swift */; };
+		D94777572C76571D00F15A9B /* AddTransactionViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94777562C76571D00F15A9B /* AddTransactionViewControllerRepresentable.swift */; };
+		D947775B2C771FF900F15A9B /* TransactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D947775A2C771FF900F15A9B /* TransactionListViewModel.swift */; };
 		EF17E84E2C76DBC500C131DA /* AchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF17E84D2C76DBC500C131DA /* AchievementView.swift */; };
 		EF17E8512C76E73700C131DA /* AchievementEmptyViewComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF17E8502C76E73700C131DA /* AchievementEmptyViewComponent.swift */; };
 		EF17E8532C76EB9400C131DA /* AchievementListViewModelSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF17E8522C76EB9400C131DA /* AchievementListViewModelSwiftUI.swift */; };
@@ -39,11 +45,9 @@
 		EFE929602C6B42D90091FF02 /* piggyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE9295F2C6B42D90091FF02 /* piggyUITestsLaunchTests.swift */; };
 		EFE929F52C6C91700091FF02 /* TransactionListEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE929F42C6C91700091FF02 /* TransactionListEntity.swift */; };
 		EFE929F82C6C92A30091FF02 /* TransactionListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE929F72C6C92A30091FF02 /* TransactionListUseCase.swift */; };
-		EFE929FB2C6C92C70091FF02 /* UpdateTransactionListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE929FA2C6C92C70091FF02 /* UpdateTransactionListRequest.swift */; };
 		EFE929FD2C6C92CF0091FF02 /* SaveTransactionListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE929FC2C6C92CF0091FF02 /* SaveTransactionListRequest.swift */; };
 		EFE92A082C6CAE880091FF02 /* TransactionListLocalEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A072C6CAE880091FF02 /* TransactionListLocalEntity.swift */; };
 		EFE92A0A2C6CAFA10091FF02 /* SaveTransactionListRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A092C6CAFA10091FF02 /* SaveTransactionListRequestDTO.swift */; };
-		EFE92A0C2C6CB05B0091FF02 /* UpdateTransactionListRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A0B2C6CB05B0091FF02 /* UpdateTransactionListRequestDTO.swift */; };
 		EFE92A102C6CB0A40091FF02 /* TransactionListResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A0F2C6CB0A40091FF02 /* TransactionListResponseDTO.swift */; };
 		EFE92A122C6CB1920091FF02 /* TransactionListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A112C6CB1910091FF02 /* TransactionListRepository.swift */; };
 		EFE92A142C6CB2230091FF02 /* SwiftDataContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE92A132C6CB2230091FF02 /* SwiftDataContextManager.swift */; };
@@ -78,6 +82,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D947772C2C735C0400F15A9B /* TransactionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionListViewController.swift; path = piggy/Modules/TransactionList/Scene/piggy/Modules/TransactionList/Scene/View/TransactionListViewController.swift; sourceTree = SOURCE_ROOT; };
+		D947772F2C735D4900F15A9B /* TransactionListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListCoordinator.swift; sourceTree = "<group>"; };
+		D94777312C75D6ED00F15A9B /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionTableViewCell.swift; path = piggy/Modules/TransactionList/Scene/piggy/Modules/TransactionList/Scene/View/TransactionTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		D94777342C7652DC00F15A9B /* AddTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewController.swift; sourceTree = "<group>"; };
+		D94777562C76571D00F15A9B /* AddTransactionViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		D947775A2C771FF900F15A9B /* TransactionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModel.swift; sourceTree = "<group>"; };
 		EF17E84D2C76DBC500C131DA /* AchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementView.swift; sourceTree = "<group>"; };
 		EF17E8502C76E73700C131DA /* AchievementEmptyViewComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementEmptyViewComponent.swift; sourceTree = "<group>"; };
 		EF17E8522C76EB9400C131DA /* AchievementListViewModelSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementListViewModelSwiftUI.swift; sourceTree = "<group>"; };
@@ -113,11 +123,9 @@
 		EFE9295F2C6B42D90091FF02 /* piggyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = piggyUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EFE929F42C6C91700091FF02 /* TransactionListEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListEntity.swift; sourceTree = "<group>"; };
 		EFE929F72C6C92A30091FF02 /* TransactionListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListUseCase.swift; sourceTree = "<group>"; };
-		EFE929FA2C6C92C70091FF02 /* UpdateTransactionListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTransactionListRequest.swift; sourceTree = "<group>"; };
 		EFE929FC2C6C92CF0091FF02 /* SaveTransactionListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTransactionListRequest.swift; sourceTree = "<group>"; };
 		EFE92A072C6CAE880091FF02 /* TransactionListLocalEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListLocalEntity.swift; sourceTree = "<group>"; };
 		EFE92A092C6CAFA10091FF02 /* SaveTransactionListRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTransactionListRequestDTO.swift; sourceTree = "<group>"; };
-		EFE92A0B2C6CB05B0091FF02 /* UpdateTransactionListRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTransactionListRequestDTO.swift; sourceTree = "<group>"; };
 		EFE92A0F2C6CB0A40091FF02 /* TransactionListResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListResponseDTO.swift; sourceTree = "<group>"; };
 		EFE92A112C6CB1910091FF02 /* TransactionListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListRepository.swift; sourceTree = "<group>"; };
 		EFE92A132C6CB2230091FF02 /* SwiftDataContextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataContextManager.swift; sourceTree = "<group>"; };
@@ -159,6 +167,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D947772E2C735CEC00F15A9B /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				D947772F2C735D4900F15A9B /* TransactionListCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		D94777332C7652AF00F15A9B /* AddTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				D94777342C7652DC00F15A9B /* AddTransactionViewController.swift */,
+				D94777562C76571D00F15A9B /* AddTransactionViewControllerRepresentable.swift */,
+			);
+			path = AddTransaction;
+			sourceTree = "<group>";
+		};
+		D94777582C771F0C00F15A9B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D947772C2C735C0400F15A9B /* TransactionListViewController.swift */,
+				D94777312C75D6ED00F15A9B /* TransactionTableViewCell.swift */,
+			);
+			name = View;
+			path = piggy/Modules/TransactionList/Scene/View;
+			sourceTree = "<group>";
+		};
+		D94777592C771F1700F15A9B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D947775A2C771FF900F15A9B /* TransactionListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		EF17E84F2C76E72300C131DA /* Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +354,7 @@
 		EFE929ED2C6C90E10091FF02 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				D94777332C7652AF00F15A9B /* AddTransaction */,
 				EFE92A1B2C6DC1550091FF02 /* AchievementList */,
 				EFE929F12C6C91580091FF02 /* TransactionList */,
 				EF34110D2C747D0400AD1CDE /* ReusableComponents */,
@@ -330,6 +374,7 @@
 		EFE929F12C6C91580091FF02 /* TransactionList */ = {
 			isa = PBXGroup;
 			children = (
+				D947772E2C735CEC00F15A9B /* Coordinator */,
 				EFE929FE2C6C94370091FF02 /* Data */,
 				EFE929F22C6C91630091FF02 /* Domain */,
 				EFE92A3A2C6DD2EE0091FF02 /* Scene */,
@@ -402,7 +447,6 @@
 			isa = PBXGroup;
 			children = (
 				EFE92A092C6CAFA10091FF02 /* SaveTransactionListRequestDTO.swift */,
-				EFE92A0B2C6CB05B0091FF02 /* UpdateTransactionListRequestDTO.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -426,7 +470,6 @@
 		EFE92A052C6CAE6D0091FF02 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				EFE929FA2C6C92C70091FF02 /* UpdateTransactionListRequest.swift */,
 				EFE929FC2C6C92CF0091FF02 /* SaveTransactionListRequest.swift */,
 			);
 			path = Request;
@@ -559,6 +602,8 @@
 		EFE92A3A2C6DD2EE0091FF02 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				D94777592C771F1700F15A9B /* ViewModel */,
+				D94777582C771F0C00F15A9B /* View */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -699,6 +744,7 @@
 				EFE92A2B2C6DC18C0091FF02 /* AchievementListRepository.swift in Sources */,
 				EF17E8652C770A4400C131DA /* UpdateAchievementStickerRequest.swift in Sources */,
 				EFE92A2A2C6DC18C0091FF02 /* AchievementListResponseDTO.swift in Sources */,
+				D94777302C735D4900F15A9B /* TransactionListCoordinator.swift in Sources */,
 				EF17E85D2C77074600C131DA /* AchievementStickerRepository.swift in Sources */,
 				EFD423D32C73525600D38B8F /* AchievementListViewController.swift in Sources */,
 				EFE929452C6B42D80091FF02 /* ContentView.swift in Sources */,
@@ -708,16 +754,17 @@
 				EFE929F52C6C91700091FF02 /* TransactionListEntity.swift in Sources */,
 				EFE929F82C6C92A30091FF02 /* TransactionListUseCase.swift in Sources */,
 				EFE929432C6B42D80091FF02 /* piggyApp.swift in Sources */,
+				D94777572C76571D00F15A9B /* AddTransactionViewControllerRepresentable.swift in Sources */,
 				EF17E8552C77038F00C131DA /* AchievementStickerLocalEntity.swift in Sources */,
 				EF17E8572C7704AD00C131DA /* SaveStickerRequestDTO.swift in Sources */,
 				EFE92A102C6CB0A40091FF02 /* TransactionListResponseDTO.swift in Sources */,
 				EFE92A292C6DC18C0091FF02 /* UpdateAchievementListRequestDTO.swift in Sources */,
 				EFA21A6D2C75A1BC008D31A9 /* AchievementListTableViewCell.swift in Sources */,
 				EF34110F2C747D2600AD1CDE /* LoadingToast.swift in Sources */,
-				EFE92A0C2C6CB05B0091FF02 /* UpdateTransactionListRequestDTO.swift in Sources */,
 				EFE92A282C6DC18C0091FF02 /* SaveAchievementListRequestDTO.swift in Sources */,
 				EFD423C72C733F9300D38B8F /* AchievementStickerEntity.swift in Sources */,
 				EFE92A372C6DC1970091FF02 /* AchievementListEntity.swift in Sources */,
+				D947772D2C735C0400F15A9B /* TransactionListViewController.swift in Sources */,
 				EF17E8672C77151000C131DA /* DraggableSticker.swift in Sources */,
 				EFE92A272C6DC18C0091FF02 /* AchievementListLocalEntity.swift in Sources */,
 				EFE92A362C6DC1970091FF02 /* UpdateAchievementListRequest.swift in Sources */,
@@ -727,7 +774,9 @@
 				EF17E8532C76EB9400C131DA /* AchievementListViewModelSwiftUI.swift in Sources */,
 				EF3411162C74830B00AD1CDE /* AchievementListCoordinator.swift in Sources */,
 				EF17E84E2C76DBC500C131DA /* AchievementView.swift in Sources */,
-				EFE929FB2C6C92C70091FF02 /* UpdateTransactionListRequest.swift in Sources */,
+				D94777322C75D6ED00F15A9B /* TransactionTableViewCell.swift in Sources */,
+				D94777352C7652DC00F15A9B /* AddTransactionViewController.swift in Sources */,
+				D947775B2C771FF900F15A9B /* TransactionListViewModel.swift in Sources */,
 				EFE92A382C6DC1970091FF02 /* AchievementListUseCase.swift in Sources */,
 				EFE92A142C6CB2230091FF02 /* SwiftDataContextManager.swift in Sources */,
 				EFE929FD2C6C92CF0091FF02 /* SaveTransactionListRequest.swift in Sources */,
