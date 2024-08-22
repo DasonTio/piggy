@@ -26,8 +26,19 @@ public final class TransactionListCoordinator {
         let useCase = makeTransactionListUseCase(
             respository: repository
         )
-        let viewController = TransactionListViewController.create()
+        let viewModel = makeTransactionListViewController(useCase: useCase)
+        let viewController = TransactionListViewController.create(with: viewModel)
         return viewController
+    }
+    
+    // Create View Model
+    private func makeTransactionListViewController(
+        useCase: TransactionListUseCase
+    ) -> TransactionListViewModel {
+        return TransactionListViewModel(
+            coordinator: self,
+            useCase: useCase
+        )
     }
     
     // Create Use Case

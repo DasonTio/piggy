@@ -64,11 +64,16 @@ class AddTransactionViewController: UIViewController {
         let image2 = UIImage(named: "drink")?.withRenderingMode(.alwaysOriginal)
         let image3 = UIImage(named: "toy")?.withRenderingMode(.alwaysOriginal)
         
-        // Create a UISegmentedControl with image items
         segmentedControl = UISegmentedControl(items: [image1, image2, image3].compactMap { $0 })
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         segmentedControl.selectedSegmentIndex = 1
         view.addSubview(segmentedControl)
+        
+        for index in 0..<segmentedControl.numberOfSegments {
+            if let imageView = segmentedControl.subviews[index].subviews.compactMap({ $0 as? UIImageView }).first {
+                imageView.contentMode = .scaleAspectFit
+            }
+        }
         
         let descriptionLabel = UILabel()
         descriptionLabel.text = "How Much I’ve Spent ?"

@@ -10,6 +10,8 @@ import Foundation
 internal struct SaveAchievementListRequestDTO: Encodable {
     let id: String
     let title: String
-    let amount: Int
+    let image: Data?
     let category: String
+    let isClaimed: Bool
+    let isReadyToClaim: Bool
 }

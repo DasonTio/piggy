@@ -6,12 +6,31 @@
 //
 
 import UIKit
+import Combine
 
 internal class TransactionListViewController: UIViewController {
-        
-    var transactionList: [TransactionListEntity] = []
+    
+    // MARK: - Properties
+    private var viewModel: TransactionListViewModel!
+    private var cancellables = Set<AnyCancellable>()
     
     @Published internal var addTransactionWrapper: AddTransactionWrapper = .init()
+        
+    var transactionList: [TransactionListEntity] = []
+    var tableView: UITableView!
+    
+    // MARK: - Publisher
+    private let didLoadPublisher = PassthroughSubject<Void, Never>()
+    private let didAddNewTransaction = PassthroughSubject<SaveTransactionListRequest, Never>()
+    
+    // MARK: - Initialization Method
+    static func create(
+        with viewModel: TransactionListViewModel
+    ) -> TransactionListViewController {
+        let vc = TransactionListViewController()
+        vc.viewModel = viewModel
+        return vc
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +38,76 @@ internal class TransactionListViewController: UIViewController {
         title = "Transaction Page"
         navigationController?.navigationBar.prefersLargeTitles = true
         setupUI()
+        bindViewModel()
+        bindEnvironmentObject()
+        didLoadPublisher.send()
+    }
+    
+    deinit {
+        cancellables.forEach { $0.cancel() }
+        cancellables.removeAll()
+    }
+    
+    // MARK: - Bind View Model
+    private func bindViewModel() {
+        let input = TransactionListViewModel.Input(
+            didLoad: didLoadPublisher,
+            didAddNewTransaction: didAddNewTransaction
+        )
+        viewModel.bind(input)
+        bindViewModelOutput()
+    }
+    
+    private func bindViewModelOutput() {
+        viewModel.output.$result
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] result in
+                guard let self = self else { return }
+                switch result {
+                case .failed(_):
+                    return
+                case .success(let data):
+                    self.transactionList = data
+                    tableView.reloadData()
+                    return
+                case .loading:
+                    return
+                default:
+                    return
+                }
+            }
+            .store(in: &cancellables)
+
+        viewModel.output.$addTransaction
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] result in
+                guard self != nil else { return }
+                switch result {
+                case .failed(_):
+                    return
+                case .success(_):
+                    return
+                case .loading:
+                    return
+                default:
+                    return
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    internal func bindEnvironmentObject() {
+        addTransactionWrapper.$amount.sink { [weak self] amount in
+            guard let self = self, let amount = amount else { return }
+            
+            
+            guard let category = self.addTransactionWrapper.category else { return }
+            
+            let id = UUID().uuidString
+            transactionList.append(.init(id: id, date: Date(), category: category, amount: amount))
+            didAddNewTransaction.send(.init(date: Date(), category: category, amount: amount))
+            tableView.reloadData()
+        }.store(in: &cancellables)
     }
     
     func setupUI() {
@@ -196,7 +285,7 @@ internal class TransactionListViewController: UIViewController {
         containerView.addSubview(titleMoneyLabel)
         
         let amountLabel = UILabel()
-        amountLabel.text = "Rp. 500.000"
+        amountLabel.text = "Rp500.000"
         amountLabel.font = UIFont.boldSystemFont(ofSize: 34)
         amountLabel.textColor = UIColor.shade2
         amountLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -263,14 +352,6 @@ internal class TransactionListViewController: UIViewController {
         categoryLabel.textAlignment = .center
         tableContainerView.addSubview(categoryLabel)
         
-        let iconLabel = UILabel()
-        iconLabel.text = ""
-        iconLabel.font = UIFont.boldSystemFont(ofSize: 28)
-        iconLabel.textColor = UIColor.shade2
-        iconLabel.translatesAutoresizingMaskIntoConstraints = false
-        iconLabel.textAlignment = .center
-        tableContainerView.addSubview(iconLabel)
-        
         let transactionLabel = UILabel()
         transactionLabel.text = "Transaction"
         transactionLabel.font = UIFont.boldSystemFont(ofSize: 28)
@@ -292,9 +373,9 @@ internal class TransactionListViewController: UIViewController {
         bottomBorder.translatesAutoresizingMaskIntoConstraints = false
         tableContainerView.addSubview(bottomBorder)
         
-        transactionList = fetchData()
+//        transactionList = fetchData()
         
-        let tableView = UITableView()
+        tableView = UITableView()
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
@@ -307,19 +388,15 @@ internal class TransactionListViewController: UIViewController {
         NSLayoutConstraint.activate([
             dateLabel.topAnchor.constraint(equalTo: tableContainerView.topAnchor, constant: 18),
             dateLabel.leadingAnchor.constraint(equalTo: tableContainerView.leadingAnchor, constant: 32),
-            dateLabel.widthAnchor.constraint(equalTo: tableContainerView.widthAnchor, multiplier: 0.13),
+            dateLabel.widthAnchor.constraint(equalTo: tableContainerView.widthAnchor, multiplier: 0.15),
             
             categoryLabel.topAnchor.constraint(equalTo: tableContainerView.topAnchor, constant: 18),
             categoryLabel.leadingAnchor.constraint(equalTo: dateLabel.trailingAnchor, constant: 0),
             categoryLabel.widthAnchor.constraint(equalTo: tableContainerView.widthAnchor, multiplier: 0.2),
-            
-            iconLabel.topAnchor.constraint(equalTo: tableContainerView.topAnchor, constant: 18),
-            iconLabel.leadingAnchor.constraint(equalTo: categoryLabel.trailingAnchor, constant: 0),
-            iconLabel.widthAnchor.constraint(equalTo: tableContainerView.widthAnchor, multiplier: 0.08),
-            
+                        
             transactionLabel.topAnchor.constraint(equalTo: tableContainerView.topAnchor, constant: 18),
-            transactionLabel.leadingAnchor.constraint(equalTo: iconLabel.trailingAnchor, constant: 0),
-            transactionLabel.widthAnchor.constraint(equalTo: tableContainerView.widthAnchor, multiplier: 0.25),
+            transactionLabel.leadingAnchor.constraint(equalTo: categoryLabel.trailingAnchor, constant: 0),
+            transactionLabel.widthAnchor.constraint(equalTo: tableContainerView.widthAnchor, multiplier: 0.3),
             
             balanceLabel.topAnchor.constraint(equalTo: tableContainerView.topAnchor, constant: 18),
             balanceLabel.leadingAnchor.constraint(equalTo: transactionLabel.trailingAnchor, constant: 0),
@@ -340,13 +417,6 @@ internal class TransactionListViewController: UIViewController {
     @objc func addButtonTapped() {
         addTransactionWrapper.isPresented = true
     }
-    
-    // MARK: - Initialization Method
-    static func create(
-    ) -> TransactionListViewController {
-        let vc = TransactionListViewController()
-        return vc
-    }
 }
 
 extension TransactionListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -361,24 +431,6 @@ extension TransactionListViewController: UITableViewDelegate, UITableViewDataSou
         cell.set(transactionListEntity: transactionListEntity)
         
         return cell
-    }
-}
-
-extension TransactionListViewController {
-    
-    func fetchData() -> [TransactionListEntity] {
-        let data1 = TransactionListEntity(id: "1", title: "test", amount: 75000, category: "Toy")
-        let data2 = TransactionListEntity(id: "2", title: "test", amount: 75000, category: "Toy")
-        let data3 = TransactionListEntity(id: "3", title: "test", amount: 75000, category: "Toy")
-        let data4 = TransactionListEntity(id: "4", title: "test", amount: 75000, category: "Toy")
-        let data5 = TransactionListEntity(id: "5", title: "test", amount: 75000, category: "Toy")
-        let data6 = TransactionListEntity(id: "6", title: "test", amount: 75000, category: "Toy")
-        let data7 = TransactionListEntity(id: "7", title: "test", amount: 75000, category: "Toy")
-        let data8 = TransactionListEntity(id: "8", title: "test", amount: 75000, category: "Toy")
-        let data9 = TransactionListEntity(id: "9", title: "test", amount: 75000, category: "Toy")
-        
-        
-        return [data1, data2, data3, data4, data5, data6, data7, data8, data9]
     }
 }
 

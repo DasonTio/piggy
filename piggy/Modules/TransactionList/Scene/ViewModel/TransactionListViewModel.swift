@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Foundation
 import Combine
 
 internal final class TransactionListViewModel {
@@ -22,12 +21,12 @@ internal final class TransactionListViewModel {
     // MARK: - Input Output Variable
     struct Input {
         let didLoad: PassthroughSubject<Void, Never>
-        let didAddNewTransaction: PassthroughSubject<SaveTransactionListRequest, Never> // Pass title
+        let didAddNewTransaction: PassthroughSubject<SaveTransactionListRequest, Never> // Pass params
     }
     
     class Output {
         @Published var result: DataState<[TransactionListEntity]> = .initiate
-        @Published var addNote: DataState<Bool> = .initiate
+        @Published var addTransaction: DataState<Bool> = .initiate
     }
     
     deinit {
@@ -37,8 +36,8 @@ internal final class TransactionListViewModel {
     
     // MARK: - Initializer
     init(
-        coordinator: NoteListCoordinator,
-        useCase: NoteListUseCase
+        coordinator: TransactionListCoordinator,
+        useCase: TransactionListUseCase
     ) {
         self.coordinator = coordinator
         self.useCase = useCase
@@ -69,65 +68,11 @@ internal final class TransactionListViewModel {
             }
             .store(in: &cancellables)
         
-        input.didTapAddReminderButton
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] in
-                guard let self else { return }
-                self.coordinator.routeToAddNote()
-            }
-            .store(in: &cancellables)
-        
-        // TODO: - Add some PUT here
-        input.didMarkNote
-            .receive(on: DispatchQueue.global())
-            .flatMap({ request in
-                return self.useCase.update(
-                    param: .init(
-                        id: request.id,
-                        completed: request.isCompleted
-                    ))
-                .map { Result.success($0) }
-                .catch { Just(Result.failure($0)) }
-                .eraseToAnyPublisher()
-            })
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] result in
-                guard let self else { return }
-                switch result {
-                case .success:
-                    debugPrint("Success update!")
-                case .failure(let error):
-                    self.output.result = .failed(reason: error)
-                }
-            }
-            .store(in: &cancellables)
-        
-        // TODO: - Add some DELETE here
-                input.didDeleteNote
-                    .receive(on: DispatchQueue.global())
-                    .flatMap({ request in
-                        return self.useCase.delete(id: request)
-                        .map { Result.success($0) }
-                        .catch { Just(Result.failure($0)) }
-                        .eraseToAnyPublisher()
-                    })
-                    .receive(on: DispatchQueue.main)
-                    .sink { [weak self] result in
-                        guard let self else { return }
-                        switch result {
-                        case .success:
-                            debugPrint("Success delete!")
-                        case .failure(let error):
-                            self.output.result = .failed(reason: error)
-                        }
-                    }
-                    .store(in: &cancellables)
-        
         // TODO: - Add some POST here
-        input.didAddNewNote
+        input.didAddNewTransaction
             .receive(on: DispatchQueue.global())
             .flatMap({ request in
-                return self.useCase.save(param: .init(id: request.id,title: request.title, todoCount: 0))
+                return self.useCase.save(params: .init(date: request.date, category: request.category, amount: request.amount))
                     .map { Result.success($0) }
                     .catch { Just(Result.failure($0)) }
                     .eraseToAnyPublisher()
@@ -137,9 +82,9 @@ internal final class TransactionListViewModel {
                 guard let self else { return }
                 switch result {
                 case .success(let data):
-                    self.output.addNote = .success(data: data)
+                    self.output.addTransaction = .success(data: data)
                 case .failure(let error):
-                    self.output.addNote = .failed(reason: error)
+                    self.output.addTransaction = .failed(reason: error)
                 }
             }
             .store(in: &cancellables)

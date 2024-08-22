@@ -45,10 +45,13 @@ internal final class DefaultAchievementListRepository: AchievementListRepository
         return Future<Bool, Error>{ promise in
             Task{ @MainActor in
                 do{
+                    //MARK: Change the image params
                     let data = AchievementListLocalEntity(
                         id: params.id,
                         title: params.title,
-                        amount: params.amount,
+//                        image: "",
+                        isClaimed: params.isClaimed,
+                        isReadyToClaim: params.isReadyToClaim,
                         category: params.category
                     )
                     
@@ -76,8 +79,10 @@ internal final class DefaultAchievementListRepository: AchievementListRepository
                     
                     if let data = try self.container?.mainContext.fetch(fetchDescriptor).first{
                         data.title = params.title
-                        data.amount = params.amount
+                        data.image = params.image
                         data.category = params.category
+                        data.isClaimed = params.isClaimed
+                        data.isReadyToClaim = params.isReadyToClaim
                         try self.container?.mainContext.save()
                         promise(.success(true))
                     }else{

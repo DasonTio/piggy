@@ -11,7 +11,6 @@ class TransactionTableViewCell: UITableViewCell {
     
     var dateLabel = UILabel()
     var categoryLabel = UILabel()
-    var iconView = UIImageView()
     var transactionLabel = UILabel()
     var balanceLabel = UILabel()
     
@@ -23,15 +22,12 @@ class TransactionTableViewCell: UITableViewCell {
         
         addSubview(dateLabel)
         addSubview(categoryLabel)
-        addSubview(iconView)
         addSubview(transactionLabel)
         addSubview(balanceLabel)
         
         configurationLabel()
-        configureIconView()
         setDateLabelConstraints()
         setCategoryLabel()
-        setIconViewConstraints()
         setTransactionLabelConstraints()
         setBalanceLabelConstraints()
     }
@@ -41,11 +37,23 @@ class TransactionTableViewCell: UITableViewCell {
     }
     
     func set(transactionListEntity: TransactionListEntity){
-        dateLabel.text = "14/08"
-        categoryLabel.text = "Toy"
-        transactionLabel.text = "+ Rp75.000"
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "d/M"
+        dateLabel.text = dateFormatter.string(from: transactionListEntity.date)
+        categoryLabel.text = transactionListEntity.category
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = "IDR"
+        formatter.currencySymbol = "Rp"
+        formatter.maximumFractionDigits = 0
+
+        // Format the value to a currency string
+        let formattedValue = formatter.string(from: NSNumber(value: transactionListEntity.amount)) ?? "Rp0"
+        
+        transactionLabel.text = formattedValue
         balanceLabel.text = "Rp425.000"
-        iconView.image = UIImage(named: "happyIcon")
     }
     
     func configurationLabel() {
@@ -75,17 +83,12 @@ class TransactionTableViewCell: UITableViewCell {
         balanceLabel.textColor = UIColor.shade2
     }
     
-    func configureIconView() {
-        iconView.contentMode = .scaleAspectFit
-        iconView.tintColor = UIColor.shade2
-    }
-    
     func setDateLabelConstraints() {
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             dateLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             dateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            dateLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.13)
+            dateLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.15)
         ])
     }
     
@@ -98,22 +101,12 @@ class TransactionTableViewCell: UITableViewCell {
         ])
     }
     
-    func setIconViewConstraints() {
-        iconView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            iconView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            iconView.leadingAnchor.constraint(equalTo: categoryLabel.trailingAnchor, constant: 0),
-            iconView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.08),
-            iconView.heightAnchor.constraint(equalTo: iconView.widthAnchor)  // Make the icon square
-        ])
-    }
-    
     func setTransactionLabelConstraints() {
         transactionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             transactionLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            transactionLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 0),
-            transactionLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.25)
+            transactionLabel.leadingAnchor.constraint(equalTo: categoryLabel.trailingAnchor, constant: 0),
+            transactionLabel.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3)
         ])
     }
     
