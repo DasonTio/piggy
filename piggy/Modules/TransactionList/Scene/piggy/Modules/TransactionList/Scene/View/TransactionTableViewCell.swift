@@ -48,12 +48,18 @@ class TransactionTableViewCell: UITableViewCell {
         formatter.currencyCode = "IDR"
         formatter.currencySymbol = "Rp"
         formatter.maximumFractionDigits = 0
+        formatter.positivePrefix = "Rp"
+        formatter.negativePrefix = "-Rp"
 
         // Format the value to a currency string
         let formattedValue = formatter.string(from: NSNumber(value: transactionListEntity.amount)) ?? "Rp0"
         
         transactionLabel.text = formattedValue
-        balanceLabel.text = "Rp425.000"
+        
+        
+        let formattedValueBalance = formatter.string(from: NSNumber(value: transactionListEntity.currentBalance)) ?? "Rp0"
+        
+        balanceLabel.text = formattedValueBalance
     }
     
     func configurationLabel() {

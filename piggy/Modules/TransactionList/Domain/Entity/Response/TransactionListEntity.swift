@@ -12,4 +12,5 @@ internal struct TransactionListEntity: Equatable{
     let date: Date
     let category: String
     let amount: Int
+    let currentBalance: Double
 }

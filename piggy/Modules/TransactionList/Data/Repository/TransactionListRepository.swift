@@ -47,7 +47,8 @@ internal final class DefaultTransactionListRepository: TransactionListRepository
                         id: params.id,
                         date: params.date,
                         category: params.category,
-                        amount: params.amount
+                        amount: params.amount,
+                        currentBalance: params.currentBalance
                     )
                     
                     self.container?.mainContext.insert(data)

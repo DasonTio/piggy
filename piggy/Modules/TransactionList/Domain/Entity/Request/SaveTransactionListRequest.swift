@@ -12,6 +12,7 @@ internal struct SaveTransactionListRequest {
     let date: Date
     let category: String
     let amount: Int
+    let currentBalance: Double
 }
 
 extension SaveTransactionListRequest {
@@ -20,7 +21,8 @@ extension SaveTransactionListRequest {
             id: self.id,
             date: self.date,
             category: self.category,
-            amount: self.amount
+            amount: self.amount,
+            currentBalance: self.currentBalance
         )
     }
 }

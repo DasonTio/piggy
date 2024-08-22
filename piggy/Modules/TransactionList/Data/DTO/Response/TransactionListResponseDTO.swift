@@ -12,6 +12,7 @@ internal struct TransactionListResponseDTO: Codable {
     let date: Date?
     let category: String?
     let amount: Int?
+    let currentBalance: Double?
 }
 
 internal extension TransactionListResponseDTO {
@@ -20,7 +21,8 @@ internal extension TransactionListResponseDTO {
             id: self.id ?? "-",
             date: self.date ?? Date(),
             category: self.category ?? "-",
-            amount: self.amount ?? 0
+            amount: self.amount ?? 0,
+            currentBalance: self.currentBalance ?? 0.0
         )
     }
 }
