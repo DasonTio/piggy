@@ -75,6 +75,7 @@ public final class TransactionListCoordinator {
 struct TransactionListViewControllerRepresentable: UIViewControllerRepresentable {
     
     @EnvironmentObject private var addTransactionWrapper: AddTransactionWrapper
+    @EnvironmentObject private var navigationRouteController: NavigationRouteController
     
     typealias UIViewControllerType = TransactionListViewController
     
@@ -82,6 +83,7 @@ struct TransactionListViewControllerRepresentable: UIViewControllerRepresentable
         let coordinator = TransactionListCoordinator(navigationController: nil)
         let viewController = coordinator.create()
         viewController.addTransactionWrapper = addTransactionWrapper
+        viewController.navigationRouteController = navigationRouteController
         
         return viewController
     }

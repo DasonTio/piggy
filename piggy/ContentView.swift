@@ -31,6 +31,7 @@ struct ContentView: View {
                                 .sheet(isPresented: $addTransactionWrapper.isPresented, content: {
                                     AddTransactionViewControllerRepresentable()
                                 })
+                                .navigationBarBackButtonHidden(true)
                                 .environmentObject(addTransactionWrapper)
                         case .parental:
                             PinViewControllerRepresentable()
