@@ -32,10 +32,8 @@ internal final class AchievementListViewModelSwiftUI: ObservableObject {
                   }
                   switch completion {
                   case .finished:
-                      print("finished")
                       break
-                  case .failure(let error):
-                      print(error)
+                  case .failure(_):
                       break
                   }
               }, receiveValue: { [weak self] result in

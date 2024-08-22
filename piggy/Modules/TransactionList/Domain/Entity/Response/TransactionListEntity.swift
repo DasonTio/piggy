@@ -7,10 +7,9 @@
 
 import Foundation
 
-
 internal struct TransactionListEntity: Equatable{
-    let id: String 
-    let title: String
-    var amount: Int
-    var category: String
+    let id: String
+    let date: Date
+    let category: String
+    let amount: Int
 }

@@ -11,10 +11,7 @@ import Combine
 internal protocol TransactionListUseCase{
     func fetch()->AnyPublisher<[TransactionListEntity]?, Error>
     func save(params: SaveTransactionListRequest)->AnyPublisher<Bool, Error>
-    func update(params: UpdateTransactionListRequest)->AnyPublisher<Bool, Error>
-    func delete(id: String)->AnyPublisher<Bool, Error>
 }
-
 
 internal final class DefaultTransactionListUseCase: TransactionListUseCase{
     private let repository: TransactionListRepository
@@ -29,13 +26,5 @@ internal final class DefaultTransactionListUseCase: TransactionListUseCase{
     
     func save(params: SaveTransactionListRequest) -> AnyPublisher<Bool, any Error> {
         return repository.save(params: params.toRequest())
-    }
-    
-    func update(params: UpdateTransactionListRequest) -> AnyPublisher<Bool, any Error> {
-        return repository.update(params: params.toRequest())
-    }
-    
-    func delete(id: String) -> AnyPublisher<Bool, any Error> {
-        return repository.delete(id: id)
     }
 }
