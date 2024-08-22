@@ -9,18 +9,22 @@ import Foundation
 import SwiftData
 
 @Model
+internal 
 class AchievementListLocalEntity{
     @Attribute(.unique) var id: String
     var title: String
-    var amount: Int
     var category: String
+    var isClaimed: Bool
+    var isReadyToClaim: Bool
+    @Attribute(.externalStorage) var image: Data?
  
-    
-    init(id: String, title: String, amount: Int, category: String) {
+    init(id: String, title: String, image: Data? = nil, isClaimed: Bool = false, isReadyToClaim: Bool = false, category: String) {
         self.id = id
         self.title = title
-        self.amount = amount
+        self.image = image
         self.category = category
+        self.isClaimed = isClaimed
+        self.isReadyToClaim = isReadyToClaim
     }
 }
 
@@ -29,8 +33,10 @@ extension AchievementListLocalEntity{
         return .init(
             id: self.id,
             title: self.title,
-            amount: self.amount,
-            category: self.category
+            image: self.image,
+            category: self.category,
+            isClaimed: self.isClaimed,
+            isReadyToClaim: self.isReadyToClaim
         )
     }
 }

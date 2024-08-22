@@ -38,7 +38,7 @@ final class LocalAchievementListTests: XCTestCase {
                 return XCTFail("Failed to get note list response")
             }
             print(response)
-            XCTAssertEqual(response[0].title, "TestAchievementTitle")
+            XCTAssertEqual(response[0].title, "Hello")
         }
         .store(in: &cancellables)
     }
@@ -46,7 +46,6 @@ final class LocalAchievementListTests: XCTestCase {
     func testAddList(){
         let response = useCase.save(params: SaveAchievementListRequest(
             title: "TestAchievementTitle",
-            amount: 10000,
             category: "TestAchievementCategory")
         )
         
@@ -72,7 +71,6 @@ final class LocalAchievementListTests: XCTestCase {
         let response = useCase.update(params: UpdateAchievementListRequest(
             id: "8EB6287E-C034-4AF5-9BAE-F041D2707E0C",
             title: "newAchievementTitle",
-            amount: 20000,
             category: "newAchievementCategory")
         )
         

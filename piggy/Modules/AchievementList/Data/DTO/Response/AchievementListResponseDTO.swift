@@ -10,8 +10,10 @@ import Foundation
 internal struct AchievementListResponseDTO: Codable {
     let id: String?
     let title: String?
-    let amount: Int?
+    let image: Data?
     let category: String?
+    let isClaimed: Bool?
+    let isReadyToClaim: Bool?
 }
 
 internal extension AchievementListResponseDTO {
@@ -19,8 +21,10 @@ internal extension AchievementListResponseDTO {
         return .init(
             id: self.id ?? "-",
             title: self.title ?? "-",
-            amount: self.amount ?? 0,
-            category: self.category ?? "-"
+            image: self.image,
+            category: self.category ?? "-",
+            isClaimed: self.isClaimed ?? false,
+            isReadyToClaim: self.isReadyToClaim ?? false
         )
     }
 }

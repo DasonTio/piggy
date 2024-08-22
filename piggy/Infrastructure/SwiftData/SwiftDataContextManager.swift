@@ -15,7 +15,7 @@ public class SwiftDataContextManager {
 
     init() {
         do {
-            container = try ModelContainer(for:TransactionListLocalEntity.self, AchievementListLocalEntity.self)
+            container = try ModelContainer(for:TransactionListLocalEntity.self, AchievementListLocalEntity.self, StickerPositionLocalEntity.self, AchievementStickerLocalEntity.self )
             if let container {
                 context = ModelContext(container)
             }
