@@ -28,6 +28,8 @@
 		EF17E86C2C7749B800C131DA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF17E86B2C7749B800C131DA /* HomeView.swift */; };
 		EF17E86E2C77854000C131DA /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF17E86D2C77854000C131DA /* View+Extensions.swift */; };
 		EF17E8712C778D8300C131DA /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF17E8702C778D8300C131DA /* UserDefaultManager.swift */; };
+		EF17E8762C77B00D00C131DA /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF17E8752C77B00D00C131DA /* PinView.swift */; };
+		EF17E8792C77B52600C131DA /* NavigationRouteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF17E8782C77B52600C131DA /* NavigationRouteController.swift */; };
 		EF34110A2C747B8C00AD1CDE /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3411092C747B8C00AD1CDE /* UITableViewCell+Extensions.swift */; };
 		EF34110C2C747C3400AD1CDE /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34110B2C747C3400AD1CDE /* UIViewController+Extensions.swift */; };
 		EF34110F2C747D2600AD1CDE /* LoadingToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34110E2C747D2600AD1CDE /* LoadingToast.swift */; };
@@ -100,6 +102,8 @@
 		EF17E86B2C7749B800C131DA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EF17E86D2C77854000C131DA /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		EF17E8702C778D8300C131DA /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
+		EF17E8752C77B00D00C131DA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
+		EF17E8782C77B52600C131DA /* NavigationRouteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouteController.swift; sourceTree = "<group>"; };
 		EF3411092C747B8C00AD1CDE /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		EF34110B2C747C3400AD1CDE /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		EF34110E2C747D2600AD1CDE /* LoadingToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingToast.swift; sourceTree = "<group>"; };
@@ -221,10 +225,26 @@
 			path = UserDefault;
 			sourceTree = "<group>";
 		};
+		EF17E8742C77AF5F00C131DA /* ParentalSetting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ParentalSetting;
+			sourceTree = "<group>";
+		};
+		EF17E8772C77B51400C131DA /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				EF17E8782C77B52600C131DA /* NavigationRouteController.swift */,
+			);
+			path = NavigationController;
+			sourceTree = "<group>";
+		};
 		EF34110D2C747D0400AD1CDE /* ReusableComponents */ = {
 			isa = PBXGroup;
 			children = (
 				EF34110E2C747D2600AD1CDE /* LoadingToast.swift */,
+				EF17E8752C77B00D00C131DA /* PinView.swift */,
 			);
 			path = ReusableComponents;
 			sourceTree = "<group>";
@@ -326,6 +346,7 @@
 		EFE9296E2C6B42EE0091FF02 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				EF17E8772C77B51400C131DA /* NavigationController */,
 				EF17E86F2C778D2D00C131DA /* UserDefault */,
 				EFE929702C6B43BD0091FF02 /* SwiftData */,
 				EFE9296F2C6B43B70091FF02 /* Networking */,
@@ -357,6 +378,7 @@
 				D94777332C7652AF00F15A9B /* AddTransaction */,
 				EFE92A1B2C6DC1550091FF02 /* AchievementList */,
 				EFE929F12C6C91580091FF02 /* TransactionList */,
+				EF17E8742C77AF5F00C131DA /* ParentalSetting */,
 				EF34110D2C747D0400AD1CDE /* ReusableComponents */,
 			);
 			path = Modules;
@@ -746,9 +768,11 @@
 				EF17E85D2C77074600C131DA /* AchievementStickerRepository.swift in Sources */,
 				EFE929452C6B42D80091FF02 /* ContentView.swift in Sources */,
 				EF17E8512C76E73700C131DA /* AchievementEmptyViewComponent.swift in Sources */,
+				EF17E8762C77B00D00C131DA /* PinView.swift in Sources */,
 				EF17E85B2C7705A600C131DA /* AchievementStickerResponseDTO.swift in Sources */,
 				EFE929F52C6C91700091FF02 /* TransactionListEntity.swift in Sources */,
 				EFE929F82C6C92A30091FF02 /* TransactionListUseCase.swift in Sources */,
+				EF17E8792C77B52600C131DA /* NavigationRouteController.swift in Sources */,
 				EFE929432C6B42D80091FF02 /* piggyApp.swift in Sources */,
 				D94777572C76571D00F15A9B /* AddTransactionViewControllerRepresentable.swift in Sources */,
 				EF17E8552C77038F00C131DA /* AchievementStickerLocalEntity.swift in Sources */,

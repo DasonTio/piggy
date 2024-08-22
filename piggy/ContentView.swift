@@ -15,19 +15,32 @@ class AddTransactionWrapper: ObservableObject {
 
 struct ContentView: View {
     @StateObject private var addTransactionWrapper = AddTransactionWrapper()
+    @StateObject var router = NavigationStackRouter()
     
     var body: some View {
-        NavigationStack {
-            HomeView()
-//            TransactionListViewControllerRepresentable()
-//                .edgesIgnoringSafeArea(.all)
-//                .sheet(isPresented: $addTransactionWrapper.isPresented, content: {
-//                    AddTransactionViewControllerRepresentable()
-//                })
-//            
-//            AchievementView()
-        }
-        .environmentObject(addTransactionWrapper)
+        NavigationStack (
+            path: $router.navigationStack){
+                HomeView()
+                    .navigationDestination(for: Route.self) { route in
+                        switch route {
+                        case .achievement:
+                            AchievementView()
+                        case .transaction:
+                            TransactionListViewControllerRepresentable()
+                                .edgesIgnoringSafeArea(.all)
+                                .sheet(isPresented: $addTransactionWrapper.isPresented, content: {
+                                    AddTransactionViewControllerRepresentable()
+                                })
+                                .environmentObject(addTransactionWrapper)
+                        case .parental:
+                            PinViewControllerRepresentable()
+                                .environmentObject(router)
+                        default:
+                            EmptyView()
+                        }
+                    }
+            }
+            .environmentObject(router)
     }
 }
 

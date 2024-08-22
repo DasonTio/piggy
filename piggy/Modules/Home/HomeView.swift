@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject private var router: NavigationStackRouter
     @State private var isAnimating: Bool = false
     
     var body: some View {
@@ -46,7 +47,7 @@ struct HomeView: View {
                                             )
                                             
                                         Button{
-                                            
+                                            router.push(.parental)
                                         }label:{
                                             Image("Parental")
                                                 .resizable()
@@ -69,7 +70,7 @@ struct HomeView: View {
                     }
                 
                 Button{
-                    
+                    router.push(.achievement)
                 }label: {
                     Image("House")
                         .resizable()
@@ -90,7 +91,7 @@ struct HomeView: View {
                 )
                 
                 Button{
-                    
+                    router.push(.transaction)
                 }label: {
                     Image("Bank")
                         .resizable()
