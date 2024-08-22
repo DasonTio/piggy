@@ -50,7 +50,6 @@ final class LocalTransactionListTest: XCTestCase {
             category: "TestCategory")
         )
         
-        
         response.sink { _ in
         }receiveValue: { response in
             XCTAssertEqual(response, true)

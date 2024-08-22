@@ -19,7 +19,7 @@ internal final class DefaultAchievementListUseCase: AchievementListUseCase{
     private let repository: AchievementListRepository
     
     init(repository: AchievementListRepository) {
-        self.repository = DefaultAchievementListRepository()
+        self.repository = repository
     }
 
     func fetch() -> AnyPublisher<[AchievementListEntity]?, any Error> {

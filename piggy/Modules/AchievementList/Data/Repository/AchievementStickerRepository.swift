@@ -1,22 +1,26 @@
 //
-//  AchievementListRepository.swift
+//  AchievementStickerRepository.swift
 //  piggy
 //
-//  Created by Dason Tiovino on 14/08/24.
+//  Created by Dason Tiovino on 22/08/24.
 //
 
 import Foundation
-import SwiftData
 import Combine
+import SwiftData
 
-internal protocol AchievementListRepository{
-    func fetch()->AnyPublisher<[AchievementListEntity]?, Error>
-    func save(params: SaveAchievementListRequestDTO)->AnyPublisher<Bool, Error>
-    func update(params: UpdateAchievementListRequestDTO)->AnyPublisher<Bool, Error>
+internal protocol AchievementStickerRepository{
+    func fetch()->AnyPublisher<[AchievementStickerEntity]?, Error>
+    func save(params: SaveAchievementStickerRequestDTO)->AnyPublisher<Bool, Error>
+    func update(params: UpdateAchievementStickerRequestDTO)->AnyPublisher<Bool, Error>
     func delete(id: String)->AnyPublisher<Bool, Error>
 }
 
-internal final class DefaultAchievementListRepository: AchievementListRepository{
+
+
+internal final class DefaultAchievementStickerRepository: AchievementStickerRepository{
+    
+    
     
     private let container: ModelContainer!
     
@@ -24,11 +28,11 @@ internal final class DefaultAchievementListRepository: AchievementListRepository
         self.container = container ?? SwiftDataContextManager.shared.container
     }
     
-    func fetch() -> AnyPublisher<[AchievementListEntity]?, any Error> {
-        return Future<[AchievementListEntity]?, Error>{ promise in
+    func fetch() -> AnyPublisher<[AchievementStickerEntity]?, any Error> {
+        return Future<[AchievementStickerEntity]?, Error>{ promise in
             Task{ @MainActor in
                 do{
-                    let fetchDescriptor = FetchDescriptor<AchievementListLocalEntity>()
+                    let fetchDescriptor = FetchDescriptor<AchievementStickerLocalEntity>()
                     let data = try self.container?.mainContext.fetch(fetchDescriptor)
                     let result = data?.compactMap{$0.toDomain()}
                     
@@ -41,19 +45,16 @@ internal final class DefaultAchievementListRepository: AchievementListRepository
         .eraseToAnyPublisher()
     }
     
-    func save(params: SaveAchievementListRequestDTO) -> AnyPublisher<Bool, any Error> {
+    func save(params: SaveAchievementStickerRequestDTO) -> AnyPublisher<Bool, any Error> {
         return Future<Bool, Error>{ promise in
             Task{ @MainActor in
                 do{
                     //MARK: Change the image params
-                    let data = AchievementListLocalEntity(
+                    let data = AchievementStickerLocalEntity(
                         id: params.id,
-                        title: params.title,
-//                        image: "",
-                        isClaimed: params.isClaimed,
-                        isReadyToClaim: params.isReadyToClaim,
-                        category: params.category
-                    )
+                        image: params.image, 
+                        position: params.position.toLocal(),
+                        scale: params.scale)
                     
                     self.container?.mainContext.insert(data)
                     try self.container?.mainContext.save()
@@ -66,23 +67,21 @@ internal final class DefaultAchievementListRepository: AchievementListRepository
         }.eraseToAnyPublisher()
     }
     
-    func update(params: UpdateAchievementListRequestDTO) -> AnyPublisher<Bool, any Error> {
+    func update(params: UpdateAchievementStickerRequestDTO) -> AnyPublisher<Bool, any Error> {
         return Future<Bool, Error>{promise in
             Task{@MainActor in
                 do{
                     let id = params.id
-                    let fetchDescriptor = FetchDescriptor<AchievementListLocalEntity>(
+                    let fetchDescriptor = FetchDescriptor<AchievementStickerLocalEntity>(
                         predicate:#Predicate{
                             $0.id == id
                         }
                     )
                     
                     if let data = try self.container?.mainContext.fetch(fetchDescriptor).first{
-                        data.title = params.title
                         data.image = params.image
-                        data.category = params.category
-                        data.isClaimed = params.isClaimed
-                        data.isReadyToClaim = params.isReadyToClaim
+                        data.position = params.position.toLocal()
+                        data.scale = params.scale
                         try self.container?.mainContext.save()
                         promise(.success(true))
                     }else{
@@ -98,7 +97,7 @@ internal final class DefaultAchievementListRepository: AchievementListRepository
     func delete(id: String) -> AnyPublisher<Bool, any Error> {
         return Future<Bool, Error>{ promise in
             Task{ @MainActor in
-                let fetchDescriptor = FetchDescriptor<AchievementListLocalEntity>(
+                let fetchDescriptor = FetchDescriptor<AchievementStickerLocalEntity>(
                     predicate: #Predicate{
                         $0.id == id
                     }
