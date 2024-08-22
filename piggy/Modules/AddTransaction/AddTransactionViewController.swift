@@ -118,10 +118,10 @@ class AddTransactionViewController: UIViewController {
             cancelButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             cancelButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
             
-            titleLabel.centerYAnchor.constraint(equalTo: cancelButton.centerYAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -335),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -160),
+            containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -260),
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             
@@ -129,9 +129,9 @@ class AddTransactionViewController: UIViewController {
             subtitleLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             
             segmentedControl.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 16),
-            segmentedControl.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 84),
-            segmentedControl.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -84),
-            segmentedControl.heightAnchor.constraint(equalToConstant: 150),
+            segmentedControl.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 124),
+            segmentedControl.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -124),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 100),
             
             descriptionLabel.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 24),
             descriptionLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
@@ -142,7 +142,7 @@ class AddTransactionViewController: UIViewController {
             
             
             submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            submitButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -48),
+            submitButton.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 48),
             submitButton.widthAnchor.constraint(equalToConstant: 170),
             submitButton.heightAnchor.constraint(equalToConstant: 70),
         ])
@@ -154,13 +154,34 @@ class AddTransactionViewController: UIViewController {
     
     
     @objc func submitButtonTapped() {
-        addTransactionWrapper.isPresented = false
-        
-        let categories = ["candy", "drink", "toy"]
-        addTransactionWrapper.category = categories[segmentedControl.selectedSegmentIndex]
-        if let text = textField.text, let amount = currencyFormatter.number(from: text)?.intValue {
-            addTransactionWrapper.amount = amount
+        if let text = textField.text, let amount = currencyFormatter.number(from: text)?.doubleValue {
+            let savedBalance = UserDefaultsManager.shared.getBalance()
+            
+            if savedBalance >= amount {
+                addTransactionWrapper.isPresented = false
+                
+                let categories = ["candy", "drink", "toy"]
+                addTransactionWrapper.category = categories[segmentedControl.selectedSegmentIndex]
+                addTransactionWrapper.amount = Int(amount)
+            } else {
+                showInsufficientBalanceAlert()
+            }
+        } else {
+            print("Invalid amount entered.")
         }
+    }
+    
+    func showInsufficientBalanceAlert() {
+        let alertController = UIAlertController(
+            title: "Insufficient Balance",
+            message: "You do not have enough balance to complete this transaction.",
+            preferredStyle: .alert
+        )
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
         
     @objc func textFieldDidChange(_ textField: UITextField) {

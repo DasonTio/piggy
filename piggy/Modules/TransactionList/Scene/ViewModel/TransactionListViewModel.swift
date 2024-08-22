@@ -72,7 +72,7 @@ internal final class TransactionListViewModel {
         input.didAddNewTransaction
             .receive(on: DispatchQueue.global())
             .flatMap({ request in
-                return self.useCase.save(params: .init(date: request.date, category: request.category, amount: request.amount))
+                return self.useCase.save(params: .init(date: request.date, category: request.category, amount: request.amount, currentBalance: request.currentBalance))
                     .map { Result.success($0) }
                     .catch { Just(Result.failure($0)) }
                     .eraseToAnyPublisher()

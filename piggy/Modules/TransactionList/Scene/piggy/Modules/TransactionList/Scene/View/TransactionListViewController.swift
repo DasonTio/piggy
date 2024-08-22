@@ -103,9 +103,14 @@ internal class TransactionListViewController: UIViewController {
             
             guard let category = self.addTransactionWrapper.category else { return }
             
+            let savedBalance = UserDefaultsManager.shared.getBalance()
+            
+            let newBalance = savedBalance - Double(amount)
+            UserDefaultsManager.shared.saveBalance(newBalance)
+            
             let id = UUID().uuidString
-            transactionList.append(.init(id: id, date: Date(), category: category, amount: amount))
-            didAddNewTransaction.send(.init(date: Date(), category: category, amount: amount))
+            transactionList.append(.init(id: id, date: Date(), category: category, amount: amount, currentBalance: newBalance))
+            didAddNewTransaction.send(.init(date: Date(), category: category, amount: amount, currentBalance: newBalance))
             tableView.reloadData()
         }.store(in: &cancellables)
     }
@@ -283,9 +288,19 @@ internal class TransactionListViewController: UIViewController {
         titleMoneyLabel.textColor = UIColor.shade2
         titleMoneyLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(titleMoneyLabel)
+                
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = "IDR"
+        formatter.currencySymbol = "Rp"
+        formatter.maximumFractionDigits = 0
+        formatter.positivePrefix = "Rp"
+        formatter.negativePrefix = "-Rp"
+
+        let formattedValue = formatter.string(from: NSNumber(value: UserDefaultsManager.shared.getBalance())) ?? "Rp0"
         
         let amountLabel = UILabel()
-        amountLabel.text = "Rp500.000"
+        amountLabel.text = formattedValue
         amountLabel.font = UIFont.boldSystemFont(ofSize: 34)
         amountLabel.textColor = UIColor.shade2
         amountLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -317,7 +332,7 @@ internal class TransactionListViewController: UIViewController {
             amountLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
             
             addButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -32),
-            addButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            addButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
         ])
         
         
@@ -417,6 +432,7 @@ internal class TransactionListViewController: UIViewController {
     @objc func addButtonTapped() {
         addTransactionWrapper.isPresented = true
     }
+
 }
 
 extension TransactionListViewController: UITableViewDelegate, UITableViewDataSource {
