@@ -18,11 +18,14 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            TransactionListViewControllerRepresentable()
-                .edgesIgnoringSafeArea(.all)
-                .sheet(isPresented: $addTransactionWrapper.isPresented, content: {
-                    AddTransactionViewControllerRepresentable()
-                })
+            HomeView()
+//            TransactionListViewControllerRepresentable()
+//                .edgesIgnoringSafeArea(.all)
+//                .sheet(isPresented: $addTransactionWrapper.isPresented, content: {
+//                    AddTransactionViewControllerRepresentable()
+//                })
+//            
+//            AchievementView()
         }
         .environmentObject(addTransactionWrapper)
     }

@@ -26,6 +26,8 @@
 		EF17E8652C770A4400C131DA /* UpdateAchievementStickerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF17E8642C770A4400C131DA /* UpdateAchievementStickerRequest.swift */; };
 		EF17E8672C77151000C131DA /* DraggableSticker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF17E8662C77151000C131DA /* DraggableSticker.swift */; };
 		EF17E86C2C7749B800C131DA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF17E86B2C7749B800C131DA /* HomeView.swift */; };
+		EF17E86E2C77854000C131DA /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF17E86D2C77854000C131DA /* View+Extensions.swift */; };
+		EF17E8712C778D8300C131DA /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF17E8702C778D8300C131DA /* UserDefaultManager.swift */; };
 		EF34110A2C747B8C00AD1CDE /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3411092C747B8C00AD1CDE /* UITableViewCell+Extensions.swift */; };
 		EF34110C2C747C3400AD1CDE /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34110B2C747C3400AD1CDE /* UIViewController+Extensions.swift */; };
 		EF34110F2C747D2600AD1CDE /* LoadingToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34110E2C747D2600AD1CDE /* LoadingToast.swift */; };
@@ -96,6 +98,8 @@
 		EF17E8642C770A4400C131DA /* UpdateAchievementStickerRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAchievementStickerRequest.swift; sourceTree = "<group>"; };
 		EF17E8662C77151000C131DA /* DraggableSticker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableSticker.swift; sourceTree = "<group>"; };
 		EF17E86B2C7749B800C131DA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		EF17E86D2C77854000C131DA /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		EF17E8702C778D8300C131DA /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		EF3411092C747B8C00AD1CDE /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		EF34110B2C747C3400AD1CDE /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		EF34110E2C747D2600AD1CDE /* LoadingToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingToast.swift; sourceTree = "<group>"; };
@@ -209,6 +213,14 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		EF17E86F2C778D2D00C131DA /* UserDefault */ = {
+			isa = PBXGroup;
+			children = (
+				EF17E8702C778D8300C131DA /* UserDefaultManager.swift */,
+			);
+			path = UserDefault;
+			sourceTree = "<group>";
+		};
 		EF34110D2C747D0400AD1CDE /* ReusableComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +318,7 @@
 			children = (
 				EF3411092C747B8C00AD1CDE /* UITableViewCell+Extensions.swift */,
 				EF34110B2C747C3400AD1CDE /* UIViewController+Extensions.swift */,
+				EF17E86D2C77854000C131DA /* View+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -313,6 +326,7 @@
 		EFE9296E2C6B42EE0091FF02 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				EF17E86F2C778D2D00C131DA /* UserDefault */,
 				EFE929702C6B43BD0091FF02 /* SwiftData */,
 				EFE9296F2C6B43B70091FF02 /* Networking */,
 			);
@@ -725,6 +739,7 @@
 			files = (
 				EF17E8632C770A3D00C131DA /* SaveAchievementStickerRequest.swift in Sources */,
 				EFE92A2B2C6DC18C0091FF02 /* AchievementListRepository.swift in Sources */,
+				EF17E8712C778D8300C131DA /* UserDefaultManager.swift in Sources */,
 				EF17E8652C770A4400C131DA /* UpdateAchievementStickerRequest.swift in Sources */,
 				EFE92A2A2C6DC18C0091FF02 /* AchievementListResponseDTO.swift in Sources */,
 				D94777302C735D4900F15A9B /* TransactionListCoordinator.swift in Sources */,
@@ -751,6 +766,7 @@
 				EFE92A362C6DC1970091FF02 /* UpdateAchievementListRequest.swift in Sources */,
 				EF3411182C748B5300AD1CDE /* DataState.swift in Sources */,
 				EF17E8592C7704B500C131DA /* UpdateStickerRequestDTO.swift in Sources */,
+				EF17E86E2C77854000C131DA /* View+Extensions.swift in Sources */,
 				EF17E85F2C770A0600C131DA /* AchievementStickerUseCase.swift in Sources */,
 				EF17E8532C76EB9400C131DA /* AchievementListViewModelSwiftUI.swift in Sources */,
 				EF17E84E2C76DBC500C131DA /* AchievementView.swift in Sources */,

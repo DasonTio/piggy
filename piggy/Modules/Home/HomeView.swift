@@ -19,24 +19,45 @@ struct HomeView: View {
                     .resizable()
                     .overlay{
                         RoundedRectangle(cornerRadius: 25.0)
-                            .fill(.pink)
-                            .strokeBorder(Color.white, lineWidth: 20)
+                            .fill(.base)
+                            .strokeBorder(Color.white, lineWidth: 10)
                             .overlay{
-                                HStack{
-                                    RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                                        .strokeBorder(Color.white, lineWidth: 5)
-                                        .overlay{
-                                            Text("Rp 100.000")
-                                                .font(.largeTitle)
-                                                .foregroundStyle(.black)
+                                VStack{
+                                    Spacer()
+                                        .frame(height: heightPercentage * 1.5)
+                                    HStack{
+                                        RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
+                                            .fill(.tint2)
+                                            .strokeBorder(Color.white, lineWidth: 9)
+                                            .overlay{
+                                                Text("Rp 100.000")
+                                                    .font(.system(size: 128))
+                                                    .fontWeight(.black)
+                                                    .foregroundStyle(.base)
+                                                    .viewBorder(
+                                                        color: .white,
+                                                        radius: 1,
+                                                        offset: 9)
+                                            }
+                                        
+                                        Spacer()
+                                            .frame(
+                                                width: widthPercentage * 3
+                                            )
+                                            
+                                        Button{
+                                            
+                                        }label:{
+                                            Image("Parental")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: widthPercentage * 20)
                                         }
-                                    Image("Parental")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: widthPercentage * 20)
                                         
-                                        
-                                }.padding(widthPercentage * 3)
+                                            
+                                            
+                                    }.padding(widthPercentage * 3)
+                                }
                             }
                             .frame(
                                 maxWidth: .infinity,
@@ -44,10 +65,7 @@ struct HomeView: View {
                             )
                             .position(CGPoint(
                                 x: widthPercentage * 50,
-                                y: heightPercentage * 15))
-                            
-                        
-                        
+                                y: heightPercentage * 12.5))
                     }
                 
                 Button{
