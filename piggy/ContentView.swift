@@ -13,8 +13,13 @@ class AddTransactionWrapper: ObservableObject {
     @Published var amount: Int?
 }
 
+class AddAchievementWrapper: ObservableObject {
+    @Published var isPresented: Bool = false
+}
+
 struct ContentView: View {
     @StateObject private var addTransactionWrapper = AddTransactionWrapper()
+    @StateObject private var addAchievementWrapper = AddAchievementWrapper()
     @StateObject var router = NavigationRouteController()
     
     var body: some View {
@@ -25,6 +30,7 @@ struct ContentView: View {
                         switch route {
                         case .achievement:
                             AchievementView()
+                                .environmentObject(router)
                         case .transaction:
                             TransactionListViewControllerRepresentable()
                                 .edgesIgnoringSafeArea(.all)
@@ -32,12 +38,22 @@ struct ContentView: View {
                                     AddTransactionViewControllerRepresentable()
                                 })
                                 .navigationBarBackButtonHidden(true)
-                                .environmentObject(addTransactionWrapper)
-                        case .parental:
-                            PinViewControllerRepresentable()
                                 .environmentObject(router)
-                        default:
-                            EmptyView()
+                                .environmentObject(addTransactionWrapper)
+                        case .pin:
+                            PinViewControllerRepresentable()
+                                .ignoresSafeArea()
+                                .navigationBarBackButtonHidden()
+                                .environmentObject(router)
+                        case .parentalSetting:
+                            ParentalSettingViewControllerRepresentable()
+                                .ignoresSafeArea()
+                                .customSheet(isPresented: $addAchievementWrapper.isPresented, content: {
+                                    AddAchievementView()
+                                })
+                                .navigationBarBackButtonHidden(true)
+                                .environmentObject(addAchievementWrapper)
+                                .environmentObject(router)
                         }
                     }
             }

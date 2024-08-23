@@ -16,15 +16,17 @@ class AchievementListLocalEntity{
     var category: String
     var isClaimed: Bool
     var isReadyToClaim: Bool
+    var allowanceReward: Int?
     @Attribute(.externalStorage) var image: Data?
  
-    init(id: String, title: String, image: Data? = nil, isClaimed: Bool = false, isReadyToClaim: Bool = false, category: String) {
+    init(id: String, title: String, image: Data? = nil, isClaimed: Bool = false, isReadyToClaim: Bool = false, category: String, allowanceReward: Int? = nil) {
         self.id = id
         self.title = title
         self.image = image
         self.category = category
         self.isClaimed = isClaimed
         self.isReadyToClaim = isReadyToClaim
+        self.allowanceReward = allowanceReward
     }
 }
 
@@ -36,7 +38,8 @@ extension AchievementListLocalEntity{
             image: self.image,
             category: self.category,
             isClaimed: self.isClaimed,
-            isReadyToClaim: self.isReadyToClaim
+            isReadyToClaim: self.isReadyToClaim,
+            allowanceReward: self.allowanceReward
         )
     }
 }

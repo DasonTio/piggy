@@ -158,8 +158,7 @@ class PinViewController: UIViewController, UITextFieldDelegate {
     }
 
     private func moveToNextPage() {
-        // TODO: Router
-         router.popToRoot()
+        router.push(.parentalSetting)
 //
 //        let nextViewController = NextViewController() // Replace with your actual next view controller
 //        nextViewController.modalTransitionStyle = .crossDissolve

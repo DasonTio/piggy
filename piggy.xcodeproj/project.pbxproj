@@ -30,10 +30,13 @@
 		EF17E8712C778D8300C131DA /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF17E8702C778D8300C131DA /* UserDefaultManager.swift */; };
 		EF17E8762C77B00D00C131DA /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF17E8752C77B00D00C131DA /* PinView.swift */; };
 		EF17E8792C77B52600C131DA /* NavigationRouteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF17E8782C77B52600C131DA /* NavigationRouteController.swift */; };
+		EF17E87C2C77C1DB00C131DA /* AddAchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF17E87B2C77C1DB00C131DA /* AddAchievementView.swift */; };
 		EF34110A2C747B8C00AD1CDE /* UITableViewCell+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3411092C747B8C00AD1CDE /* UITableViewCell+Extensions.swift */; };
 		EF34110C2C747C3400AD1CDE /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34110B2C747C3400AD1CDE /* UIViewController+Extensions.swift */; };
 		EF34110F2C747D2600AD1CDE /* LoadingToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF34110E2C747D2600AD1CDE /* LoadingToast.swift */; };
 		EF3411182C748B5300AD1CDE /* DataState.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3411172C748B5300AD1CDE /* DataState.swift */; };
+		EF78503D2C78353E0041B3A5 /* ParentalSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78503C2C78353E0041B3A5 /* ParentalSettingView.swift */; };
+		EF78503F2C784D650041B3A5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF78503E2C784D650041B3A5 /* ImagePicker.swift */; };
 		EFD423C72C733F9300D38B8F /* AchievementStickerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD423C62C733F9300D38B8F /* AchievementStickerEntity.swift */; };
 		EFE929432C6B42D80091FF02 /* piggyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE929422C6B42D80091FF02 /* piggyApp.swift */; };
 		EFE929452C6B42D80091FF02 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE929442C6B42D80091FF02 /* ContentView.swift */; };
@@ -104,10 +107,13 @@
 		EF17E8702C778D8300C131DA /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		EF17E8752C77B00D00C131DA /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		EF17E8782C77B52600C131DA /* NavigationRouteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouteController.swift; sourceTree = "<group>"; };
+		EF17E87B2C77C1DB00C131DA /* AddAchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAchievementView.swift; sourceTree = "<group>"; };
 		EF3411092C747B8C00AD1CDE /* UITableViewCell+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extensions.swift"; sourceTree = "<group>"; };
 		EF34110B2C747C3400AD1CDE /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		EF34110E2C747D2600AD1CDE /* LoadingToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingToast.swift; sourceTree = "<group>"; };
 		EF3411172C748B5300AD1CDE /* DataState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataState.swift; sourceTree = "<group>"; };
+		EF78503C2C78353E0041B3A5 /* ParentalSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentalSettingView.swift; sourceTree = "<group>"; };
+		EF78503E2C784D650041B3A5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		EFD423C62C733F9300D38B8F /* AchievementStickerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementStickerEntity.swift; sourceTree = "<group>"; };
 		EFE9293F2C6B42D80091FF02 /* piggy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = piggy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE929422C6B42D80091FF02 /* piggyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = piggyApp.swift; sourceTree = "<group>"; };
@@ -228,6 +234,7 @@
 		EF17E8742C77AF5F00C131DA /* ParentalSetting */ = {
 			isa = PBXGroup;
 			children = (
+				EF78503C2C78353E0041B3A5 /* ParentalSettingView.swift */,
 			);
 			path = ParentalSetting;
 			sourceTree = "<group>";
@@ -240,11 +247,20 @@
 			path = NavigationController;
 			sourceTree = "<group>";
 		};
+		EF17E87A2C77C1C900C131DA /* AddAchievement */ = {
+			isa = PBXGroup;
+			children = (
+				EF17E87B2C77C1DB00C131DA /* AddAchievementView.swift */,
+			);
+			path = AddAchievement;
+			sourceTree = "<group>";
+		};
 		EF34110D2C747D0400AD1CDE /* ReusableComponents */ = {
 			isa = PBXGroup;
 			children = (
 				EF34110E2C747D2600AD1CDE /* LoadingToast.swift */,
 				EF17E8752C77B00D00C131DA /* PinView.swift */,
+				EF78503E2C784D650041B3A5 /* ImagePicker.swift */,
 			);
 			path = ReusableComponents;
 			sourceTree = "<group>";
@@ -375,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				EF17E8682C77493400C131DA /* Home */,
+				EF17E87A2C77C1C900C131DA /* AddAchievement */,
 				D94777332C7652AF00F15A9B /* AddTransaction */,
 				EFE92A1B2C6DC1550091FF02 /* AchievementList */,
 				EFE929F12C6C91580091FF02 /* TransactionList */,
@@ -762,10 +779,12 @@
 				EF17E8632C770A3D00C131DA /* SaveAchievementStickerRequest.swift in Sources */,
 				EFE92A2B2C6DC18C0091FF02 /* AchievementListRepository.swift in Sources */,
 				EF17E8712C778D8300C131DA /* UserDefaultManager.swift in Sources */,
+				EF78503F2C784D650041B3A5 /* ImagePicker.swift in Sources */,
 				EF17E8652C770A4400C131DA /* UpdateAchievementStickerRequest.swift in Sources */,
 				EFE92A2A2C6DC18C0091FF02 /* AchievementListResponseDTO.swift in Sources */,
 				D94777302C735D4900F15A9B /* TransactionListCoordinator.swift in Sources */,
 				EF17E85D2C77074600C131DA /* AchievementStickerRepository.swift in Sources */,
+				EF17E87C2C77C1DB00C131DA /* AddAchievementView.swift in Sources */,
 				EFE929452C6B42D80091FF02 /* ContentView.swift in Sources */,
 				EF17E8512C76E73700C131DA /* AchievementEmptyViewComponent.swift in Sources */,
 				EF17E8762C77B00D00C131DA /* PinView.swift in Sources */,
@@ -792,6 +811,7 @@
 				EF17E8592C7704B500C131DA /* UpdateStickerRequestDTO.swift in Sources */,
 				EF17E86E2C77854000C131DA /* View+Extensions.swift in Sources */,
 				EF17E85F2C770A0600C131DA /* AchievementStickerUseCase.swift in Sources */,
+				EF78503D2C78353E0041B3A5 /* ParentalSettingView.swift in Sources */,
 				EF17E8532C76EB9400C131DA /* AchievementListViewModelSwiftUI.swift in Sources */,
 				EF17E84E2C76DBC500C131DA /* AchievementView.swift in Sources */,
 				D94777322C75D6ED00F15A9B /* TransactionTableViewCell.swift in Sources */,

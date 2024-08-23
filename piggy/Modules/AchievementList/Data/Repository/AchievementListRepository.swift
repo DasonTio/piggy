@@ -52,7 +52,8 @@ internal final class DefaultAchievementListRepository: AchievementListRepository
 //                        image: "",
                         isClaimed: params.isClaimed,
                         isReadyToClaim: params.isReadyToClaim,
-                        category: params.category
+                        category: params.category,
+                        allowanceReward: params.allowanceReward
                     )
                     
                     self.container?.mainContext.insert(data)
@@ -83,6 +84,7 @@ internal final class DefaultAchievementListRepository: AchievementListRepository
                         data.category = params.category
                         data.isClaimed = params.isClaimed
                         data.isReadyToClaim = params.isReadyToClaim
+                        data.allowanceReward = params.allowanceReward
                         try self.container?.mainContext.save()
                         promise(.success(true))
                     }else{

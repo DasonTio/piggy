@@ -14,6 +14,7 @@ internal struct AchievementListResponseDTO: Codable {
     let category: String?
     let isClaimed: Bool?
     let isReadyToClaim: Bool?
+    let allowanceReward: Int?
 }
 
 internal extension AchievementListResponseDTO {
@@ -24,7 +25,8 @@ internal extension AchievementListResponseDTO {
             image: self.image,
             category: self.category ?? "-",
             isClaimed: self.isClaimed ?? false,
-            isReadyToClaim: self.isReadyToClaim ?? false
+            isReadyToClaim: self.isReadyToClaim ?? false,
+            allowanceReward: self.allowanceReward
         )
     }
 }

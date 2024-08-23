@@ -12,7 +12,8 @@ import Combine
 enum Route: Hashable {
     case achievement
     case transaction
-    case parental
+    case pin
+    case parentalSetting
 }
 
 class NavigationRouteController: ObservableObject {
