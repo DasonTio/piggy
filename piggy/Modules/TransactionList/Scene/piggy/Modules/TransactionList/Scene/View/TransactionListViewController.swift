@@ -12,9 +12,12 @@ internal class TransactionListViewController: UIViewController {
     
     // MARK: - Properties
     private var viewModel: TransactionListViewModel!
-    var navigationRouteController: NavigationRouteController?
     private var cancellables = Set<AnyCancellable>()
+    private var userDefaultsObserver: NSKeyValueObservation?
     
+    let amountLabel = UILabel()
+    
+    internal var navigationRouteController: NavigationRouteController?
     @Published internal var addTransactionWrapper: AddTransactionWrapper = .init()
         
     var transactionList: [TransactionListEntity] = []
@@ -101,7 +104,6 @@ internal class TransactionListViewController: UIViewController {
         addTransactionWrapper.$amount.sink { [weak self] amount in
             guard let self = self, let amount = amount else { return }
             
-            
             guard let category = self.addTransactionWrapper.category else { return }
             
             let savedBalance = UserDefaultsManager.shared.getBalance()
@@ -113,6 +115,10 @@ internal class TransactionListViewController: UIViewController {
             transactionList.append(.init(id: id, date: Date(), category: category, amount: amount, currentBalance: newBalance))
             didAddNewTransaction.send(.init(date: Date(), category: category, amount: amount, currentBalance: newBalance))
             tableView.reloadData()
+
+            DispatchQueue.main.async {
+                self.addTransactionWrapper.amount = nil
+            }
         }.store(in: &cancellables)
     }
     
@@ -331,12 +337,14 @@ internal class TransactionListViewController: UIViewController {
 
         let formattedValue = formatter.string(from: NSNumber(value: UserDefaultsManager.shared.getBalance())) ?? "Rp0"
         
-        let amountLabel = UILabel()
         amountLabel.text = formattedValue
         amountLabel.font = UIFont.boldSystemFont(ofSize: 34)
         amountLabel.textColor = UIColor.shade2
         amountLabel.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(amountLabel)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(balanceDidChange), name: .balanceDidChange, object: nil)
+
 
         let addButton = UIButton(type: .custom)
         addButton.translatesAutoresizingMaskIntoConstraints = false
@@ -460,6 +468,18 @@ internal class TransactionListViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: tableContainerView.trailingAnchor, constant: -8),
             tableView.bottomAnchor.constraint(equalTo: tableContainerView.bottomAnchor, constant: -8)
         ])
+    }
+    
+    @objc func balanceDidChange(notification: Notification) {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = "IDR"
+        formatter.currencySymbol = "Rp"
+        formatter.maximumFractionDigits = 0
+        formatter.positivePrefix = "Rp"
+        formatter.negativePrefix = "-Rp"
+        let formattedValue = formatter.string(from: NSNumber(value: UserDefaultsManager.shared.getBalance())) ?? "Rp0"
+        amountLabel.text = formattedValue
     }
     
     @objc func addButtonTapped() {

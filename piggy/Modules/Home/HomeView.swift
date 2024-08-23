@@ -31,7 +31,7 @@ struct HomeView: View {
                                             .fill(.tint2)
                                             .strokeBorder(Color.white, lineWidth: 9)
                                             .overlay{
-                                                Text("Rp 100.000")
+                                                Text(formattedBalance())
                                                     .font(.system(size: 128))
                                                     .fontWeight(.black)
                                                     .foregroundStyle(.base)
@@ -47,7 +47,7 @@ struct HomeView: View {
                                             )
                                             
                                         Button{
-                                            router.push(.parental)
+                                            router.push(.pin)
                                         }label:{
                                             Image("Parental")
                                                 .resizable()
@@ -120,6 +120,17 @@ struct HomeView: View {
                 
             }
         }.ignoresSafeArea()
+    }
+    
+    func formattedBalance()->String{
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = "IDR"
+        formatter.currencySymbol = "Rp"
+        formatter.maximumFractionDigits = 0
+        formatter.positivePrefix = "Rp"
+        formatter.negativePrefix = "-Rp"
+        return formatter.string(from: NSNumber(value: UserDefaultsManager.shared.getBalance())) ?? "Rp0"
     }
 }
 

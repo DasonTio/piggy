@@ -24,6 +24,7 @@ class UserDefaultsManager {
     
     func savePIN(_ pin: String) {
         userDefaults.set(pin, forKey: Keys.pin)
+        NotificationCenter.default.post(name: .pinDidChange, object: nil)
     }
     
     func getPIN() -> String? {
@@ -34,9 +35,15 @@ class UserDefaultsManager {
     
     func saveBalance(_ balance: Double) {
         userDefaults.set(balance, forKey: Keys.balance)
+        NotificationCenter.default.post(name: .balanceDidChange, object: nil)
     }
     
     func getBalance() -> Double {
         return userDefaults.double(forKey: Keys.balance)
     }
+}
+
+extension Notification.Name {
+    static let pinDidChange = Notification.Name("pinDidChange")
+    static let balanceDidChange = Notification.Name("balanceDidChange")
 }

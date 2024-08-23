@@ -14,4 +14,5 @@ internal struct UpdateAchievementListRequestDTO: Encodable {
     let category: String
     let isClaimed: Bool
     let isReadyToClaim: Bool
+    let allowanceReward: Int?
 }

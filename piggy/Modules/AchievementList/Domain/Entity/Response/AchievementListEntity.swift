@@ -15,4 +15,5 @@ internal struct AchievementListEntity: Equatable{
     var category: String
     var isClaimed: Bool
     var isReadyToClaim: Bool
+    var allowanceReward: Int?
 }

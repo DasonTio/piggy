@@ -11,6 +11,7 @@ import Combine
 internal final class AchievementListViewModelSwiftUI: ObservableObject {
     private var achievementUseCase: AchievementListUseCase
     private var stickerUseCase: AchievementStickerUseCase
+    private var transactionUseCase: TransactionListUseCase
     private var cancellables = Set<AnyCancellable>()
 
     @Published var data: [AchievementListEntity] = []
@@ -18,9 +19,10 @@ internal final class AchievementListViewModelSwiftUI: ObservableObject {
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
-    init(achievementUseCase: AchievementListUseCase, stickerUseCase: AchievementStickerUseCase) {
+    init(achievementUseCase: AchievementListUseCase, stickerUseCase: AchievementStickerUseCase, transactionUseCase: TransactionListUseCase) {
         self.achievementUseCase = achievementUseCase
         self.stickerUseCase = stickerUseCase
+        self.transactionUseCase = transactionUseCase
     }
     
     func fetch() {
@@ -37,6 +39,7 @@ internal final class AchievementListViewModelSwiftUI: ObservableObject {
                       break
                   }
               }, receiveValue: { [weak self] result in
+                  print(result)
                   self?.data = result ?? []
               })
               .store(in: &cancellables)
@@ -60,9 +63,13 @@ internal final class AchievementListViewModelSwiftUI: ObservableObject {
             .store(in: &cancellables)
     }
     
-    func addItem(params: SaveAchievementListRequest) {
-        self.achievementUseCase.save(params: params)
-        self.fetch()
+    func addAchievementWithAmount(title: String, amount: Int) {
+        self.achievementUseCase.save(params: .init(
+                title: title,
+                category: "",
+                allowanceReward: amount
+            )
+        )
     }
     
     func updateItem(params: UpdateAchievementListRequest){
@@ -76,7 +83,8 @@ internal final class AchievementListViewModelSwiftUI: ObservableObject {
             image: model.image,
             category: model.category,
             isClaimed: model.isClaimed,
-            isReadyToClaim: !model.isReadyToClaim
+            isReadyToClaim: !model.isReadyToClaim,
+            allowanceReward: model.allowanceReward
             )
         )
         self.fetch()
@@ -96,15 +104,29 @@ internal final class AchievementListViewModelSwiftUI: ObservableObject {
                 image: model.image,
                 category: model.category,
                 isClaimed: !model.isClaimed,
-                isReadyToClaim: model.isReadyToClaim
+                isReadyToClaim: model.isReadyToClaim,
+                allowanceReward: model.allowanceReward
                 )
             )
             self.stickerUseCase.save(params: .init(
-                image: "Mascot",
+                image: ["Mascot", "Gift"].randomElement() ?? "Mascot",
                 position: StickerPosition(x: 0, y: 0),
                 scale: 1,
                 isShowed: false)
             )
+            
+            if let allowance = model.allowanceReward {
+                print(allowance)
+                let currentBalance = UserDefaultsManager.shared.getBalance()
+                UserDefaultsManager.shared.saveBalance(currentBalance + Double(allowance))
+                self.transactionUseCase.save(params: .init(
+                    date: Date(),
+                    category: "UangJajan",
+                    amount: allowance,
+                    currentBalance: UserDefaultsManager.shared.getBalance())
+                )
+                
+            }
         }else{
             showAlert.toggle()
             alertMessage = "The reward cannot be claimed yet"
@@ -113,8 +135,9 @@ internal final class AchievementListViewModelSwiftUI: ObservableObject {
         self.fetch()
     }
     
-    func updateStickerPosition(model: AchievementStickerEntity){
-        
+    func addSticker(params: SaveAchievementStickerRequest){
+        self.stickerUseCase.save(params: params)
+        self.fetch()
     }
     
     func updateStickerShowState(model: AchievementStickerEntity){
